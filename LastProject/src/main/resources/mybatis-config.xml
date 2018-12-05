@@ -10,6 +10,7 @@
   
   <mappers>
     <mapper resource="mappings/member-mapper.xml"/>
+    <mapper resource="mappings/house-mapper.xml"/>
   </mappers>
 </configuration>
 
