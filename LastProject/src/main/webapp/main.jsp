@@ -33,15 +33,10 @@
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
-  <style>
-
-  	#gukbong { width:350px; height: 200px;}
-  </style>
-  
 </head>
 
 <body>
-
+ 
   <!--==========================
     Header
   ============================-->
