@@ -1,8 +1,8 @@
-package com.spring.biz.house;
+package com.spring.biz.host;
 
 import java.sql.Date;
 
-public class HouseVO {
+public class HostVO {
 	 // 아이디 
     private String m_id;
     // 최대투숙객 
