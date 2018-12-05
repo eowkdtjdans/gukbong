@@ -9,7 +9,7 @@
   </typeAliases> -->
   
   <mappers>
-    <mapper resource="mappings/house-mapper.xml"/>
+    <mapper resource="mappings/host-mapper.xml"/>
     <mapper resource="mappings/localAdvice-mapper.xml"/>
     <mapper resource="mappings/localAdviceComment-mapper.xml"/>
     <mapper resource="mappings/member-mapper.xml"/>
