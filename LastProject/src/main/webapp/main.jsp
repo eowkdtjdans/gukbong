@@ -34,7 +34,7 @@
     License: https://bootstrapmade.com/license/
   ======================================================= -->
   <style>
-  	#gukbong { width:400px; height: 200px;}
+  	#gukbong { width:350px; height: 200px;}
   </style>
   
 </head>
@@ -207,7 +207,7 @@
               </p>
             </div>
           </div>
-
+ 
           <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
             <div class="about-col">
               <div class="img">
