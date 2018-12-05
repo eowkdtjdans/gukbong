@@ -34,8 +34,14 @@
     License: https://bootstrapmade.com/license/
   ======================================================= -->
   <style>
+<<<<<<< HEAD
 
   </style>
+=======
+  	#gukbong { width:350px; height: 200px;}
+  </style>
+  
+>>>>>>> branch 'master' of https://github.com/eowkdtjdans/gukbong.git
 </head>
 
 <body>
@@ -47,14 +53,14 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">BizPage</a></h1>
+        <h1><a href="#intro" class="scrollto">Couch Surfing</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Home</a></li>
+          <li class="menu-active"><a href="test.jsp">Home</a></li> <!-- #intro -->
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
@@ -197,7 +203,7 @@
           <div class="col-md-4 wow fadeInUp">
             <div class="about-col">
               <div class="img">
-                <img src="img/about-mission.jpg" alt="" class="img-fluid">
+                <img src="img/gukbong1.jpg" alt="" class="img-fluid" id="gukbong">
                 <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
               </div>
               <h2 class="title"><a href="#">Our Mission</a></h2>
@@ -206,11 +212,11 @@
               </p>
             </div>
           </div>
-
+ 
           <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
             <div class="about-col">
               <div class="img">
-                <img src="img/about-plan.jpg" alt="" class="img-fluid">
+                <img src="img/gukbong2.jpg" alt="" class="img-fluid" id="gukbong">
                 <div class="icon"><i class="ion-ios-list-outline"></i></div>
               </div>
               <h2 class="title"><a href="#">Our Plan</a></h2>
@@ -223,7 +229,7 @@
           <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
             <div class="about-col">
               <div class="img">
-                <img src="img/about-vision.jpg" alt="" class="img-fluid">
+                <img src="img/gukbong3.jpg" alt="" class="img-fluid" id="gukbong">
                 <div class="icon"><i class="ion-ios-eye-outline"></i></div>
               </div>
               <h2 class="title"><a href="#">Our Vision</a></h2>
