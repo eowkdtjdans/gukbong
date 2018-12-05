@@ -14,8 +14,12 @@
     <mapper resource="mappings/localAdviceComment-mapper.xml"/>
     <mapper resource="mappings/member-mapper.xml"/>
     <mapper resource="mappings/profile-mapper.xml"/>
+    <mapper resource="mappings/profileImage-mapper.xml"/>
     <mapper resource="mappings/review-mapper.xml"/>
     <mapper resource="mappings/travelPlan-mapper.xml"/>
+    <mapper resource="mappings/country-mapper.xml"/>
+    <mapper resource="mappings/countryImage-mapper.xml"/>
+    
     
   </mappers>
 </configuration>
