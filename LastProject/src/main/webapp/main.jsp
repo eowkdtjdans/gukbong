@@ -33,15 +33,6 @@
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
-  <style>
-<<<<<<< HEAD
-
-  </style>
-=======
-  	#gukbong { width:350px; height: 200px;}
-  </style>
-  
->>>>>>> branch 'master' of https://github.com/eowkdtjdans/gukbong.git
 </head>
 
 <body>
