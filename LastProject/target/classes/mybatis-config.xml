@@ -9,8 +9,14 @@
   </typeAliases> -->
   
   <mappers>
-    <mapper resource="mappings/member-mapper.xml"/>
     <mapper resource="mappings/house-mapper.xml"/>
+    <mapper resource="mappings/localAdvice-mapper.xml"/>
+    <mapper resource="mappings/localAdviceComment-mapper.xml"/>
+    <mapper resource="mappings/member-mapper.xml"/>
+    <mapper resource="mappings/profile-mapper.xml"/>
+    <mapper resource="mappings/review-mapper.xml"/>
+    <mapper resource="mappings/travelPlan-mapper.xml"/>
+    
   </mappers>
 </configuration>
 
