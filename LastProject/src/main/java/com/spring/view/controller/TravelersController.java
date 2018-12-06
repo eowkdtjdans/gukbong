@@ -15,14 +15,19 @@ public class TravelersController {
 	@Autowired
 	private TravelersService travelersService;
 	
+	public TravelersController() {
+		System.out.println("TravelersController 실행");
+	}
+	
 	@RequestMapping("/getTravelersList.do")
-	public String getBoardList(TravelersVO vo, Model model) {
+	public String getTravelersList(String key, Model model) {
 		System.out.println(">> 글목록 조회 처리(getTravelersList)");
 		
-		List<TravelersVO> travelersList = travelersService.getTravelersList("Seoul");
+		key="Seoul";
+		
+		List<TravelersVO> travelersList = travelersService.getTravelersList(key);
 		
 		model.addAttribute("travelersList", travelersList);
-		
-		return "travelers/Travelers.jsp";
+		return "views/Travelers.jsp";
 	}
 }
