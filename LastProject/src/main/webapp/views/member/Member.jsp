@@ -25,11 +25,11 @@
 <div id="container">
 	<h1>회원가입</h1>
 	<hr>
-	<form action="../insertMember.do" method="post">
+	<form action="../../insertMember.do" method="post">
 	<table>
 		<tr>
 			<th>아이디</th>
-			<td><input type="text" name="id" "></td>
+			<td><input type="text" name="m_id"></td>
 		</tr>
 		
 		<tr>
@@ -39,7 +39,7 @@
 			
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="password"></td>
+			<td><input type="text" name="name"></td>
 		</tr>
 			
 		<tr>
