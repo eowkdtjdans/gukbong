@@ -5,5 +5,9 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="localAdviceDAO">
-
+	<select id="getLocalAdviceList" parameterType="String" resultType="localadvice">
+		SELECT * FROM LOCALADVICE 
+		WHERE UPPER(L_SUBJECT) LIKE '%' || UPPER(#{key}) || '%' 
+		ORDER BY M_ID
+	</select>
 </mapper>

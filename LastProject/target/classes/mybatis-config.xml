@@ -9,7 +9,8 @@
   </typeAliases> -->
   
   <typeAliases>
-  	<typeAlias alias="travelers" type="com.spring.biz.Travelers.TravelersVO"/>
+  	<typeAlias alias="travelers" type="com.spring.biz.travelers.TravelersVO"/>
+  	<typeAlias alias="localadvice" type="com.spring.biz.localAdvice.LocalAdviceVO"/>
   </typeAliases>
   
   <mappers>

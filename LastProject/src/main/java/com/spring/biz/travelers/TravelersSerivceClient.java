@@ -1,4 +1,4 @@
-package com.spring.biz.Travelers;
+package com.spring.biz.travelers;
 
 import java.util.List;
 

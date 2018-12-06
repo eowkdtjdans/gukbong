@@ -1,11 +1,15 @@
 package com.spring.view.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SubController {
+	
+	HttpSession session;
 	
 	@RequestMapping("/sub.do")
 	public String moveController(@RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword) {
@@ -19,19 +23,13 @@ public class SubController {
 			path = "/getHostList.do";
 		} else if(searchCondition == "find_event") {
 			path = "/getEventList.do";
-		} else if(searchCondition == "find_advice") {
-			path = "/getAdviceList.do";
+		} else if(searchCondition.equals("find_advice")) {
+			path = "/getLocalAdviceList.do";	
 		}
-		
+		session.setAttribute("key", searchKeyword);
+	
 		return path;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
