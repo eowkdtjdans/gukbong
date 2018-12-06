@@ -11,6 +11,6 @@
 	<a href="../getTravelersList.do">travelers</a>
 	<a href="Travelers.jsp">travelers2</a>
 	<a href="travelers/Travelers.jsp">travelers3</a>
-	<a href="member/Member.jsp">member</a>
+	<a href="member/Member.jsp">member</a> 
 </body>
 </html>

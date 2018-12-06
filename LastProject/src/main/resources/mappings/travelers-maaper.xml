@@ -7,9 +7,7 @@
 <mapper namespace="trevelerDAO">
 	<select id="getTravelersList" parameterType="String" resultType="travelers">
 		SELECT * FROM TRAVELERS
-		<where>
-			UPPER(T_COUNTRY) LIKE '%' || UPPER(#{key}) || '%'
-		</where>
+		WHERE UPPER(T_COUNTRY) LIKE '%' || UPPER(#{key}) || '%'
 		ORDER BY M_ID
 	</select>
 </mapper>
