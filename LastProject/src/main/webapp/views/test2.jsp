@@ -9,11 +9,15 @@
 <title>Commit-Test</title>
 </head>
 <body>
-	<h2>ㅎㅇ</h2>
-	<a href="../getTravelersList.do">travelers</a>
-	<a href="Travelers.jsp">travelers2</a>
-	<a href="travelers/Travelers.jsp">travelers3</a>
-	<a href="member/MemberRegister.jsp">Register</a> 
-	<a href="member/MemberLogin.jsp">Login</a> 
+<c:choose>
+	<c:when test="'${sessionScope.m_id == null }">
+		<a href="${path}/member/loginMember.do ">로그인</a>
+	</c:when>
+	
+	<c:otherwise>
+		${m_id }님이 로그인 중입니다.
+	</c:otherwise>
+	
+</c:choose>
 </body>
 </html>
