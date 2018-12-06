@@ -3,16 +3,19 @@ package com.spring.view.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("key")
 public class SubController {
 	
 	HttpSession session;
 	
 	@RequestMapping("/sub.do")
-	public String moveController(@RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword) {
+	public String moveController(Model model,@RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword) {
 		System.out.println("searchCondition : " + searchCondition);
 		System.out.println("searchKeyword : " + searchKeyword);
 		String path = null;
@@ -26,7 +29,7 @@ public class SubController {
 		} else if(searchCondition.equals("find_advice")) {
 			path = "/getLocalAdviceList.do";	
 		}
-		session.setAttribute("key", searchKeyword);
+		model.addAttribute("key", searchKeyword);
 	
 		return path;
 	}

@@ -22,9 +22,9 @@ public class LocalAdviceController {
 	@RequestMapping("/getLocalAdviceList.do")
 	public String getLocalAdviceList(String key, Model model) {
 		System.out.println(">> getlocalAdviceList조회");
-			
-		key = (String)session.getAttribute("key");
 		
+		key = (String)session.getAttribute("key");
+		System.out.println("ㅎㅇ");
 		List<LocalAdviceVO> localAdviceList = localAdviceService.getLocalAdviceList(key);
 		
 		model.addAttribute("localAdviceList", localAdviceList);
