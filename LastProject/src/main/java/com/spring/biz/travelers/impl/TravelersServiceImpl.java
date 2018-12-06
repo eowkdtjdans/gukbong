@@ -10,12 +10,12 @@ import com.spring.biz.travelers.TravelersVO;
 
 @Service("travelersService")
 public class TravelersServiceImpl implements TravelersService{
-   @Autowired
-   private TravelersDAO travelersDAO;
-   
-   public TravelersServiceImpl() {
-      System.out.println("TravelersServiceImpl 객체 생성");
-   }
+	@Autowired
+	private TravelersDAO travelersDAO;
+	
+	public TravelersServiceImpl() {
+		System.out.println("TravelersServiceImpl 객체 생성");
+	}
 
    @Override
    public List<TravelersVO> getTravelersList(String key) {

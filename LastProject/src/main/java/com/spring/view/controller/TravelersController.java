@@ -13,23 +13,23 @@ import com.spring.biz.travelers.TravelersVO;
 
 @Controller
 public class TravelersController {
-   @Autowired
-   private TravelersService travelersService;
-   
-   public TravelersController() {
-      System.out.println("TravelersController 실행");
-   }
-   
-   @RequestMapping("/getTravelersList.do")
-   public String getTravelersList(String key, Model model) {
-      System.out.println(">> 글목록 조회 처리(getTravelersList)");
-      
-      
-      key="Seoul";
-      
-      List<TravelersVO> travelersList = travelersService.getTravelersList(key);
-      
-      model.addAttribute("travelersList", travelersList);
-      return "views/Travelers.jsp";
-   }
+	@Autowired
+	private TravelersService travelersService;
+	
+	public TravelersController() {
+		System.out.println("TravelersController 실행");
+	}
+	
+	@RequestMapping("/getTravelersList.do")
+	public String getTravelersList(String key, Model model) {
+		System.out.println(">> 글목록 조회 처리(getTravelersList)");
+		
+		
+		key="Seoul";
+		
+		List<TravelersVO> travelersList = travelersService.getTravelersList(key);
+		
+		model.addAttribute("travelersList", travelersList);
+		return "views/travelers/Travelers.jsp";
+	}
 }

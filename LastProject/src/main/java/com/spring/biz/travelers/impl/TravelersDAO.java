@@ -10,12 +10,12 @@ import com.spring.biz.travelers.TravelersVO;
 
 @Repository("travelersDAO")
 public class TravelersDAO {
-   @Autowired
-   private SqlSessionTemplate mybatis;
-   
-   //Travelers 조회
-   public List<TravelersVO> getTravelersList(String key) {
-      System.out.println("TravelersDAO: getTravelersList()처리");
-      return mybatis.selectList("getTravelersList", key);
-   }
+	@Autowired
+	private SqlSessionTemplate mybatis;
+	
+	//Travelers 조회
+	public List<TravelersVO> getTravelersList(String key) {
+		System.out.println("TravelersDAO: getTravelersList()처리");
+		return mybatis.selectList("getTravelersList", key);
+	}
 }

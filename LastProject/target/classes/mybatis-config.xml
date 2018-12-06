@@ -10,6 +10,7 @@
   
   <typeAliases>
   	<typeAlias alias="travelers" type="com.spring.biz.travelers.TravelersVO"/>
+  	<typeAlias alias="member" type="com.spring.biz.member.MemberVO"/>
   	<typeAlias alias="localadvice" type="com.spring.biz.localAdvice.LocalAdviceVO"/>
   </typeAliases>
   

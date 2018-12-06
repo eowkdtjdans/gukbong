@@ -14,7 +14,7 @@ public class MemberVO {
 	    // 성별 
 	    private String m_gender;
 	    // 생일 
-	    private Date m_birthday;
+	    private String m_birthday;
 	    // 주소 
 	    private String m_address;
 	    // 가입일 
@@ -55,10 +55,10 @@ public class MemberVO {
 		public void setM_gender(String m_gender) {
 			this.m_gender = m_gender;
 		}
-		public Date getM_birthday() {
+		public String getM_birthday() {
 			return m_birthday;
 		}
-		public void setM_birthday(Date m_birthday) {
+		public void setM_birthday(String m_birthday) {
 			this.m_birthday = m_birthday;
 		}
 		public String getM_address() {
