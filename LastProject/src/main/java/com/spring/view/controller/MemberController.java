@@ -21,7 +21,7 @@ public class MemberController {
 	public String insertMember(MemberVO vo) {
 		System.out.println("=======인서트시작");
 		memberService.insertMember(vo);
-		return "views/Travelers.jsp";
+		return "views/test.jsp";
 	}
 	
 }
