@@ -1,4 +1,4 @@
-package com.spring.biz.travelplan.impl;
+package com.spring.biz.travelers.impl;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.biz.Travelers.TravelersVO;
+import com.spring.biz.travelers.TravelersVO;
 
 @Repository("travelersDAO")
 public class TravelersDAO {

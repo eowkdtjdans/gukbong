@@ -9,7 +9,7 @@
   </typeAliases> -->
   
   <typeAliases>
-  	<typeAlias alias="travelers" type="com.spring.biz.Travelers.TravelersVO"/>
+  	<typeAlias alias="travelers" type="com.spring.biz.travelers.TravelersVO"/>
  	<typeAlias alias="member" type="com.spring.biz.member.MemberVO"/>
   </typeAliases>
   

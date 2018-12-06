@@ -1,12 +1,12 @@
-package com.spring.biz.travelplan.impl;
+package com.spring.biz.travelers.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.biz.Travelers.TravelersService;
-import com.spring.biz.Travelers.TravelersVO;
+import com.spring.biz.travelers.TravelersService;
+import com.spring.biz.travelers.TravelersVO;
 
 @Service("travelersService")
 public class TravelersServiceImpl implements TravelersService{

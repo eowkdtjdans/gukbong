@@ -8,11 +8,18 @@
 <title>Travelers</title>
 </head>
 <body>
-	hello
 	<c:forEach var="list" items="${travelersList}">
+	<a href="#">
 		<div class="container">
-			<p>${list.m_id}</p>
+			<ul>
+				<li>프로필사진</li>
+				<li>${list.m_id}</li>
+				<li>${list.t_visits}</li>
+				<li>${list.t_dateofvisit}</li>
+				<li>${list.t_motive}</li>
+			</ul>
 		</div>
+	</a>
 	</c:forEach>
 </body>
 </html>
