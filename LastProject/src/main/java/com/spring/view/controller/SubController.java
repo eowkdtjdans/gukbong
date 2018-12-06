@@ -15,7 +15,7 @@ public class SubController {
 	HttpSession session;
 	
 	@RequestMapping("/sub.do")
-	public String moveController(Model model,@RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword) {
+	public String moveController(@RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword, Model model) {
 		System.out.println("searchCondition : " + searchCondition);
 		System.out.println("searchKeyword : " + searchKeyword);
 		String path = null;
