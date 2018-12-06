@@ -8,6 +8,10 @@
   	<typeAlias alias="member" type="com.spring.biz.member.MemberVO"/>
   </typeAliases> -->
   
+  <typeAliases>
+  	<typeAlias alias="travelers" type="com.spring.biz.Travelers.TravelersVO"/>
+  </typeAliases>
+  
   <mappers>
     <mapper resource="mappings/host-mapper.xml"/>
     <mapper resource="mappings/localAdvice-mapper.xml"/>
@@ -16,11 +20,9 @@
     <mapper resource="mappings/profile-mapper.xml"/>
     <mapper resource="mappings/profileImage-mapper.xml"/>
     <mapper resource="mappings/review-mapper.xml"/>
-    <mapper resource="mappings/travelPlan-mapper.xml"/>
+    <mapper resource="mappings/travelers-maaper.xml"/>
     <mapper resource="mappings/country-mapper.xml"/>
     <mapper resource="mappings/countryImage-mapper.xml"/>
-    
-    
   </mappers>
 </configuration>
 
