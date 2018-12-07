@@ -45,7 +45,7 @@ public class MemberController {
 		MemberVO vo2 = memberService.loginMember(vo, session);
 		if (vo2.getM_id() != null) {
 			session.setAttribute("m_id", vo.getM_id());
-			return "views/test.jsp";
+			return "views/sub.jsp";
 		} else {
 			return "views/test2.jsp";
 		}

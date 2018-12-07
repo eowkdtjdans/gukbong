@@ -20,7 +20,7 @@ public class SubController {
 		System.out.println("searchCondition : " + searchCondition);
 		System.out.println("searchKeyword : " + searchKeyword);
 		String path = null;
-		
+		System.out.println("sub.do ==== post방식");
 		if(searchCondition.equals("find_travler")) {
 			path = "/getTravelersList.do";
 		} else if(searchCondition == "find_host") {
@@ -35,8 +35,12 @@ public class SubController {
 		return path;
 	}
 	
+
+	
+	
 	@RequestMapping(value="/sub.do", method=RequestMethod.GET)
 	public String moveController() {
+		System.out.println("sub.do === g=et방식");
 		return "views/sub.jsp";
 	}
 
