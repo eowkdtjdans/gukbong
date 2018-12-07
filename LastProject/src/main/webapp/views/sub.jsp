@@ -12,24 +12,24 @@
  
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="views/img/favicon.png" rel="icon">
+  <link href="views/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="views/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="views/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="views/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="views/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="views/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="views/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="views/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: BizPage
@@ -108,6 +108,7 @@
 <section id="about">
       <div class="container">
         <header class="section-header">
+        	<p>${m_id }</p>
           <h3>About Us</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </header>
@@ -397,24 +398,24 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+  <script src="views/lib/jquery/jquery.min.js"></script>
+  <script src="views/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="views/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="views/lib/easing/easing.min.js"></script>
+  <script src="views/lib/superfish/hoverIntent.js"></script>
+  <script src="views/lib/superfish/superfish.min.js"></script>
+  <script src="views/lib/wow/wow.min.js"></script>
+  <script src="views/lib/waypoints/waypoints.min.js"></script>
+  <script src="views/lib/counterup/counterup.min.js"></script>
+  <script src="views/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="views/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="views/lib/lightbox/js/lightbox.min.js"></script>
+  <script src="views/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <script src="views/contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+  <script src="views/js/main.js"></script>
 
 </body>
 </html>

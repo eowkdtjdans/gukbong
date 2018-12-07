@@ -35,11 +35,17 @@ public class SubController {
 		return path;
 	}
 	
-	@RequestMapping(value="/sub.do", method=RequestMethod.GET)
+	@RequestMapping(value="/sub2.do", method=RequestMethod.GET)
 	public String moveController() {
+		System.out.println("sub.do 겟방식");
 		return "views/sub.jsp";
 	}
-
+	
+	@RequestMapping(value="/sub2.do", method=RequestMethod.POST)
+	public String moveController2() {
+		System.out.println("sub.do 겟방식");
+		return "views/sub.jsp";
+	}
 	
 	
 	

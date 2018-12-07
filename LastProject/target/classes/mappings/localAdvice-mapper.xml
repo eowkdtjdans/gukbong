@@ -19,8 +19,10 @@
 	
 	<!-- 게시글 입력 -->
 	<insert id="insertLocalAdvice" parameterType="localadvice">
-		
+		INSERT INTO LOCALADVICE(L_IDX, M_ID, L_SUBJECT, L_CONTENT, L_DATE, L_UPVOTE, L_REVIEWCOUNT) 
+		VALUES (LOCALADVICE_SEQ.NEXTVAL, #{m_id}, #{l_subject}, #{l_content}, SYSDATE, 0, 0)
 	</insert>
+	
 </mapper>
 
 
