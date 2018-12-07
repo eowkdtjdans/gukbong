@@ -45,7 +45,11 @@ public class MemberController {
 		MemberVO vo2 = memberService.loginMember(vo, session);
 		if (vo2.getM_id() != null) {
 			session.setAttribute("m_id", vo.getM_id());
+<<<<<<< HEAD
 			return "views/sub.jsp";
+=======
+			return "/sub2.do";
+>>>>>>> branch 'master' of https://github.com/eowkdtjdans/gukbong.git
 		} else {
 			return "views/test2.jsp";
 		}

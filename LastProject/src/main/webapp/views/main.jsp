@@ -51,7 +51,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="test.jsp">Home</a></li> <!-- #intro -->
+          <li class="menu-active"><a href="../sub2.do">Home</a></li> <!-- #intro -->
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
