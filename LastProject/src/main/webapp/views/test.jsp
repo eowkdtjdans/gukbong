@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -11,7 +13,10 @@
 	<a href="../getTravelersList.do">travelers</a>
 	<a href="Travelers.jsp">travelers2</a>
 	<a href="travelers/Travelers.jsp">travelers3</a>
-	<a href="member/MemberRegister.jsp">Register</a> 
-	<a href="../getLocalAdviceList.do">로컬어드바이스 </a>
+	<a href="../insertMember.do">Register</a> 
+	<a href="../loginMember.do">Login</a> 
+	<a href="../logoutMember.do">logout</a> 
+	
+	<p>세션 : [${m_id}] 앙기무리</p>
 </body>
 </html>
