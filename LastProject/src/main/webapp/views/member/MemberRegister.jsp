@@ -40,43 +40,43 @@
   
    <tr>
       <td style="width: 110px;">아이디</td>
-	      <td>
-	      	<input type="text" class="form-control" id="m_id" name="m_id" maxLength="20" />
+	      <td colspan="1">
+	      	<input type="text" class="form-control" id="m_id" name="m_id" maxLength="30" />
 	      </td>
    </tr>
      
    <tr>
       <td style="width: 110px;">비밀번호</td>
 	      <td>
-	      	<input type="text" class="form-control" id="m_pwd" name="m_pwd" maxLength="20" />
+	      	<input type="text" class="form-control" id="m_pwd" name="m_pwd" maxLength="30" />
 	      </td>
    </tr>
      
    <tr>
       <td style="width: 110px;">이름</td>
 	      <td>
-	      	<input type="text" class="form-control" id="m_name" name="m_name" maxLength="20" />
+	      	<input type="text" class="form-control" id="m_name" name="m_name" maxLength="30" />
 	      </td>
    </tr>
      
    <tr>
       <td style="width: 110px;">핸드폰</td>
 	      <td>
-	      	<input type="text" class="form-control" id="m_phone" name="m_phone" maxLength="20" />
+	      	<input type="text" class="form-control" id="m_phone" name="m_phone" maxLength="30" />
 	      </td>
    </tr>
      
    <tr>
       <td style="width: 110px;">성별</td>
 	      <td>
-	      	<input type="text" class="form-control" id="m_gender" name="m_gender" maxLength="20" />
+	      	<input type="text" class="form-control" id="m_gender" name="m_gender" maxLength="30" />
 	      </td>
    </tr>
      
    <tr>
       <td style="width: 110px;" colspan="1">생일</td>
 	      <td colsapn="1">
-	      	<input type="text" class="form-control" id="m_birthday" name="m_birthday" maxLength="20" />
+	      	<input type="text" class="form-control" id="m_birthday" name="m_birthday" maxLength="30" />
 	      </td>
    </tr>
    
@@ -84,7 +84,7 @@
    <tr>
       <td style="width: 110px;">주소</td>
 	      <td>
-	      	<input type="text" class="form-control" id="m_address" name="m_address" maxLength="20" />
+	      	<input type="text" class="form-control" id="m_address" name="m_address" maxLength="30" />
 	      </td>
    </tr>
    

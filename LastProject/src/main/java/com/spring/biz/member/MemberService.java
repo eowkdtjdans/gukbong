@@ -1,6 +1,7 @@
 package com.spring.biz.member;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,5 +17,6 @@ public interface MemberService {
 	public MemberVO loginMember(MemberVO vo, HttpSession session);
 	
 	public void logoutMember(HttpSession session);
+	
 	
 }

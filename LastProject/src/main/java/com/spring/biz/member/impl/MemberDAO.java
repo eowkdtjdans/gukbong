@@ -1,5 +1,7 @@
 package com.spring.biz.member.impl;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,4 +30,6 @@ public class MemberDAO {
 	public void logout(HttpSession session) {
 		
 	}
+
+	
 }

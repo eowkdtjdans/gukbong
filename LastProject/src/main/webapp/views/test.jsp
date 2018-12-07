@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE>
 <html>
 <head>
@@ -16,6 +15,7 @@
 	<a href="../insertMember.do">Register</a> 
 	<a href="../loginMember.do">Login</a> 
 	<a href="../logoutMember.do">logout</a> 
+	<a href="../findPwdMember.do">findPwd</a> 
 	
 	<p>세션 : [${m_id}] 앙기무리</p>
 </body>
