@@ -23,11 +23,10 @@
 <script>
 	//로그인 값이 있던 없던 그냥 넘어가니까 JSON을 사용해서 데이터베이스에 있는지 체크하기.
 
-	$(document).ready(function() {
-		$('#login').click(function() {
-		alert("앙기모띠");
-	});
-});
+    $("#login").submit(function(){ //문서의 모든 form이 submit될때
+            alert("앙기모띠"); // password라고 경고
+            
+    });
 		
 </script>
 
@@ -38,7 +37,7 @@
 
 
 <div class="container" id="container"> <!--id="login"  -->
-<form method="post" action="../../loginMember.do" id="login">
+<form method="post" action="../../loginMember.do">
    <table class="table table-hover" style="text-align : center; border : 1px solid #dddddd" >
 <thead>
    <tr>
@@ -67,7 +66,7 @@
    
    <tr>
       <td colspan="3">
-      <input  type="submit" class="btn btn-outline-secondary pull-right"  value="로그인"/> 
+      <input  type="submit" class="btn btn-outline-secondary pull-right"  value="로그인" id="login"/> 
       </td>
    </tr>
    
