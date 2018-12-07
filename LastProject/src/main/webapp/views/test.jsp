@@ -13,7 +13,10 @@
 	<a href="../getTravelersList.do">travelers</a>
 	<a href="Travelers.jsp">travelers2</a>
 	<a href="travelers/Travelers.jsp">travelers3</a>
-	<a href="member/MemberRegister.jsp">Register</a> 
-	<a href="member/MemberLogin.jsp">Login</a> 
+	<a href="../insertMember.do">Register</a> 
+	<a href="../loginMember.do">Login</a> 
+	<a href="../logoutMember.do">logout</a> 
+	<a href="../sub.do">sub페이지</a>  
+	<p>세션 : [${m_id}] 앙기무리</p>
 </body>
 </html>

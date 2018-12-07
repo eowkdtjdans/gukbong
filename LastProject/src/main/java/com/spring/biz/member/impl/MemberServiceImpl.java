@@ -1,10 +1,11 @@
 package com.spring.biz.member.impl;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.spring.biz.member.MemberService;
 import com.spring.biz.member.MemberVO;
@@ -23,18 +24,25 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public void loginMember(MemberVO vo, Model model) {
+	/*public void loginMember(MemberVO vo, Model model) {
 		
 			model.addAttribute("m_id", vo.getM_id());
 			model.addAttribute("m_pwd", vo.getM_pwd());
 			memberDAO.loginMember(vo, model);
-	}
+	}*/
+	public MemberVO loginMember(MemberVO vo, HttpSession session) {
+	
+		session.setAttribute("m_id", vo.getM_id());
+		
+	return memberDAO.loginMember(vo);
+}
 	
 	@Override
 	public void logoutMember(HttpSession session) {
 		session.invalidate();
 		
 	}
+
 
 
 }

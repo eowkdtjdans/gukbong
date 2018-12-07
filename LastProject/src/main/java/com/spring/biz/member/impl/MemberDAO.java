@@ -1,5 +1,7 @@
 package com.spring.biz.member.impl;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,13 +21,15 @@ public class MemberDAO {
 		mybatis.insert("insertMember", vo);
 	}
 	
-	public void loginMember(MemberVO vo, Model model) {
+	public MemberVO loginMember(MemberVO vo) {
 		
 		System.out.println("======== loginMember() =========");
-		mybatis.selectOne("loginMember", vo);
+		return mybatis.selectOne("loginMember", vo);
 	}
 	
 	public void logout(HttpSession session) {
 		
 	}
+
+	
 }
