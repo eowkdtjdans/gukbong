@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.biz.member.MemberService;
 import com.spring.biz.member.MemberVO;
@@ -63,5 +62,10 @@ public class MemberController {
 		memberService.logoutMember(session);
 		return "views/test.jsp";
 	}
+	
+	
+
+	
+	
 	
 }

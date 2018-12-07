@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>로그인</title>
+<title>비밀번호 찾기</title>
 <style>
 	#container {
 		width: 700px;
@@ -20,30 +20,16 @@
 	.center { text-align: center; }
 </style>
 
-<script>
-	//로그인 값이 있던 없던 그냥 넘어가니까 JSON을 사용해서 데이터베이스에 있는지 체크하기.
-
-	$(document).ready(function() {
-		$('#login').click(function() {
-		alert("앙기모띠");
-	});
-});
-		
-</script>
-
 </head>
 <body>
 
-<body>
-
-
 <div class="container" id="container"> <!--id="login"  -->
-<form method="post" action="../../loginMember.do" id="login">
+<form method="post" action="../../findPwdMember.do" id="findPwdMember">
    <table class="table table-hover" style="text-align : center; border : 1px solid #dddddd" >
 <thead>
    <tr>
       <th colspan="3">
-         <h3 class="text-center" >로그인</h3>
+         <h3 class="text-center" >비밀번호 찾기</h3>
       </th>
    </tr>
 </thead>
@@ -58,15 +44,16 @@
    </tr>
      
    <tr>
-      <td style="width: 110px;">비밀번호</td>
+      <td style="width: 110px;">핸드폰 번호</td>
 	      <td>
-	      	<input type="text" class="form-control" id="m_pwd" name="m_pwd" maxLength="30" />
+	      	<input type="text" class="form-control" id="m_phone" name="m_phone" maxLength="30" />
 	      </td>
    </tr>
      
+   
    <tr>
       <td colspan="3">
-      <input  type="submit" class="btn btn-outline-secondary pull-right"  value="로그인"/> 
+      <input  type="submit" class="btn btn-outline-secondary pull-right"  value="아이디 찾기"/> 
       </td>
    </tr>
    

@@ -1,5 +1,7 @@
 package com.spring.biz.member.impl;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,7 @@ public class MemberServiceImpl implements MemberService{
 		session.invalidate();
 		
 	}
+
 
 
 }

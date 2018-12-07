@@ -16,7 +16,7 @@
 	<a href="../insertMember.do">Register</a> 
 	<a href="../loginMember.do">Login</a> 
 	<a href="../logoutMember.do">logout</a> 
-	<a href="sub.jsp">sub페이지</a> 
+	<a href="sub.jsp">sub페이지</a>  
 	<p>세션 : [${m_id}] 앙기무리</p>
 </body>
 </html>
