@@ -35,20 +35,13 @@ public class SubController {
 		return path;
 	}
 	
-<<<<<<< HEAD
 
 	
 	
-	@RequestMapping(value="/sub.do", method=RequestMethod.GET)
-=======
 	@RequestMapping(value="/sub2.do", method=RequestMethod.GET)
->>>>>>> branch 'master' of https://github.com/eowkdtjdans/gukbong.git
 	public String moveController() {
-<<<<<<< HEAD
 		System.out.println("sub.do === g=et방식");
-=======
 		System.out.println("sub.do 겟방식");
->>>>>>> branch 'master' of https://github.com/eowkdtjdans/gukbong.git
 		return "views/sub.jsp";
 	}
 	

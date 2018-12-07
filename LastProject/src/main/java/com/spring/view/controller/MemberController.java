@@ -27,7 +27,7 @@ public class MemberController {
 	public String insertMemberPost(MemberVO vo) {
 		System.out.println("=======인서트시작");
 		memberService.insertMember(vo);
-		return "views/test.jsp";
+		return "/sub2.do";
 	}
 	//회원가입
 		@RequestMapping(value = "/insertMember.do", method=RequestMethod.GET)
@@ -45,11 +45,7 @@ public class MemberController {
 		MemberVO vo2 = memberService.loginMember(vo, session);
 		if (vo2.getM_id() != null) {
 			session.setAttribute("m_id", vo.getM_id());
-<<<<<<< HEAD
-			return "views/sub.jsp";
-=======
 			return "/sub2.do";
->>>>>>> branch 'master' of https://github.com/eowkdtjdans/gukbong.git
 		} else {
 			return "views/test2.jsp";
 		}
@@ -64,7 +60,7 @@ public class MemberController {
 	@RequestMapping("/logoutMember.do")
 	public String logoutMember(HttpSession session) {
 		memberService.logoutMember(session);
-		return "views/test.jsp";
+		return "/sub2.do";
 	}
 	
 	

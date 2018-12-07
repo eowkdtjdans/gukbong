@@ -24,6 +24,16 @@
 	</repositories>
 	
 	<dependencies>
+		
+		
+		<!-- jQuery -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.3.1</version>
+		</dependency>
+				
+	
 	 <!-- 이메일 인증 기능 -->
         <dependency>
             <groupId>javax.mail</groupId>

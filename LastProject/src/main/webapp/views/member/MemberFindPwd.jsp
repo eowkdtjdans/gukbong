@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+	<title>비밀번호 찾기</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrapModal/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../cssModal/my-login.css">
 </head>
@@ -21,29 +21,33 @@
 					</div>
 					<div class="card fat">
 						<div class="card-body">
-							<h4 class="card-title">Forgot Password</h4>
-							<form method="POST" class="my-login-validation" novalidate="">
+							<h4 class="card-title">비밀번호 찾기</h4>
+							<form method="POST" class="my-login-validation" action="../../FindPwdMember.do">
 								<div class="form-group">
-									<label for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
-									<div class="invalid-feedback">
-										Email is invalid
-									</div>
+									<label for="m_email">ID</label>
+									<input id="m_id" type="email" class="form-control" name="m_id" required autofocus>
+
 									<div class="form-text text-muted">
 										By clicking "Reset Password" we will send a password reset link
 									</div>
 								</div>
+								
+									<div class="form-group">
+									<label for="m_phone">전화번호</label>
+									<input id="m_phone" type="text" class="form-control" name="m_id" required autofocus>
+
+								</div>
 
 								<div class="form-group m-0">
 									<button type="submit" class="btn btn-primary btn-block">
-										Reset Password
+										비밀번호 찾기
 									</button>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; 2017 &mdash; Your Company 
+						Copyright &copy; 2018 &mdash; 방국봉
 					</div>
 				</div>
 			</div>

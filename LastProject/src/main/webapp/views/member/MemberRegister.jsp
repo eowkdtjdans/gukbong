@@ -13,13 +13,11 @@
 	<title>회원가입</title>
 	
  <script type="text/javascript">
- 	function login_chk() {
- 		event.preventDefault();
- 		alert("앙기모띠");
- 		action="../../insertMember.do"
- 	}
-	
- 
+ function registerAjax(frm) {
+		alert("외않뒈");
+		frm.action = "../../insertMember.do"; //로그인 작업 처리
+		frm.submit();
+	}
  </script>
 	
 </head>
@@ -31,25 +29,25 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title" style="text-align : center;">회원가입</h4>
-							<form method="POST" class="my-login-validation" >
+							<form method="POST" class="my-login-validation" action="../../insertMember.do">
 								<div class="form-group">
 									<label for="email">아이디</label>
-									<input id="m_id" type="email" class="form-control" name="m_id">
+									<input id="m_id" type="email" class="form-control" name="m_id" required autofocus>
 								</div>
 
 								<div class="form-group">
 									<label for="password">비밀번호</label>
-									<input id="m_pwd" type="password" class="form-control" name="m_pwd" >
+									<input id="m_pwd" type="password" class="form-control" name="m_pwd" required data-eye>
 								</div>
 						
 								<div class="form-group">
 									<label for="name">성함</label>
-									<input id="m_name" type="text" class="form-control" name="m_name" >
+									<input id="m_name" type="text" class="form-control" name="m_name" required data-eye>
 								</div>
 						
 								<div class="form-group">
 									<label for="phone">핸드폰</label>
-									<input id="m_phone" type="text" class="form-control" name="m_phone" >
+									<input id="m_phone" type="text" class="form-control" name="m_phone" required data-eye>
 								</div>
 						
 						         <div class="form-group" style="text-algin : center; margin : 0 auto">
@@ -66,12 +64,12 @@
 						
 								<div class="form-group">
 									<label for="birthday">생년월일</label>
-									<input id="m_birthday" type="text" class="form-control" name="m_birthday"> 
+									<input id="m_birthday" type="text" class="form-control" name="m_birthday" required data-eye> 
 								</div>
 						
 								<div class="form-group">
 									<label for="phone">주소</label>
-									<input id="m_address" type="text" class="form-control" name="m_address">
+									<input id="m_address" type="text" class="form-control" name="m_address" required data-eye>
 								</div>
 						
 						
@@ -86,16 +84,18 @@
 								</div> -->
 
 								<div class="form-group m-0">
-									<input type="button" class="btn btn-primary btn-block" id="login_chk" value="lkasjflsald;fjl;j" onclick="login_chk(this.form)">
+									<button type="button" class="btn btn-primary btn-block" onclick="registerAjax(this.form)">
+										회원가입
+									</button>
 								</div>
 								<div class="mt-4 text-center">
-									Already have an account? <a href="index.html">Login</a>
+									사이트 회원이십니까? <a href="../../loginMember.do">로그인</a>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; 2017 &mdash; Your Company 
+						Copyright &copy; 2018 &mdash; 국봉쓰
 					</div>
 				</div>
 			</div>

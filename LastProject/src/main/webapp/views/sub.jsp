@@ -73,8 +73,10 @@
           </li>
           <li><a href="#about">쪽지</a></li>
           <li><a href="#portfolio">마이 프로필</a></li>      
-          <li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login">Sign in</a></li>
-		  <li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Sign up</a></li>   
+          
+          <li><a href="../../logoutMember.do">로그아웃</a></li>
+          <li><a href="../../loginMember.do" >로그인</a></li>
+		  <li><a  href="../../insertMember.do" >회원가입</a></li>   
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
