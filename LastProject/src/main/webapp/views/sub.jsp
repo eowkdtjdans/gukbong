@@ -12,24 +12,24 @@
  
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="views/img/favicon.png" rel="icon">
+  <link href="views/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="views/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="views/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="views/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="views/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="views/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="views/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="views/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: BizPage
@@ -72,7 +72,9 @@
             </ul>
           </li>
           <li><a href="#about">쪽지</a></li>
-          <li><a href="#portfolio">마이 프로필</a></li>         
+          <li><a href="#portfolio">마이 프로필</a></li>      
+          <li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login">Sign in</a></li>
+		  <li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Sign up</a></li>   
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -102,14 +104,15 @@
 	</table>
 </form>
 
-
    <!--==========================
       About Us Section
     ============================-->    
 <section id="about">
       <div class="container">
         <header class="section-header">
+        	<p>${m_id }</p>
           <h3>About Us</h3>
+          <p>${m_id }</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </header>
 
@@ -398,24 +401,150 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+  <script src="views/lib/jquery/jquery.min.js"></script>
+  <script src="views/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="views/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="views/lib/easing/easing.min.js"></script>
+  <script src="views/lib/superfish/hoverIntent.js"></script>
+  <script src="views/lib/superfish/superfish.min.js"></script>
+  <script src="views/lib/wow/wow.min.js"></script>
+  <script src="views/lib/waypoints/waypoints.min.js"></script>
+  <script src="views/lib/counterup/counterup.min.js"></script>
+  <script src="views/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="views/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="views/lib/lightbox/js/lightbox.min.js"></script>
+  <script src="views/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <script src="views/contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+  <script src="views/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================================================== modal  -->
+<div class="cd-intro">
+		<h1>Login/Signup Modal Window</h1>
+		<div class="cd-nugget-info">
+			<a href="http://codyhouse.co/gem/loginsignup-modal-window/">
+				<span>
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+						<style type="text/css">
+							.cd-nugget-info-arrow{fill:#383838;}
+						</style>
+						<polygon class="cd-nugget-info-arrow" points="15,7 4.4,7 8.4,3 7,1.6 0.6,8 0.6,8 0.6,8 7,14.4 8.4,13 4.4,9 15,9 "/>
+					</svg>
+				</span>
+				Article &amp; Download
+			</a>
+		</div> <!-- cd-nugget-info -->
+	</div>
+
+	<div class="cd-signin-modal js-signin-modal"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-signin-modal__container"> <!-- this is the container wrapper -->
+			<ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger">
+				<li><a href="#0" data-signin="login" data-type="login">Sign in</a></li>
+				<li><a href="#0" data-signin="signup" data-type="signup">New account</a></li>
+			</ul>
+
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="login"> <!-- log in form -->
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Password</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="text"  placeholder="Password">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input type="checkbox" id="remember-me" checked class="cd-signin-modal__input ">
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width" type="submit" value="Login">
+					</p>
+				</form>
+				
+				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="reset">Forgot your password?</a></p>
+			</div> <!-- cd-signin-modal__block -->
+
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="signup"> <!-- sign up form -->
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Username</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Username">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Password</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Password">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input type="checkbox" id="accept-terms" class="cd-signin-modal__input ">
+						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Create account">
+					</p>
+				</form>
+			</div> <!-- cd-signin-modal__block -->
+
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="reset"> <!-- reset password form -->
+				<p class="cd-signin-modal__message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="reset-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Reset password">
+					</p>
+				</form>
+
+				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="login">Back to log-in</a></p>
+			</div> <!-- cd-signin-modal__block -->
+			<a href="#0" class="cd-signin-modal__close js-close">Close</a>
+		</div> <!-- cd-signin-modal__container -->
+	</div> <!-- cd-signin-modal -->
+<script src="jsModal/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
+<script src="jsModal/main.js"></script> <!-- Resource JavaScript -->
+
+
+
+
+
+
 
 </body>
 </html>

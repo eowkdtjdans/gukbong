@@ -18,5 +18,14 @@ public class LocalAdviceDAO {
 		return mybatis.selectList("getLocalAdviceList", key);
 	}
 	
+	//(서울)에 대한 게시글 수
+	public int countLocalAdvice(String key) {
+		return mybatis.selectOne("countLocalAdvice", key);
+	}
+	
+	//게시글 입력
+	public void insertLocalAdvice(LocalAdviceVO vo) {
+		mybatis.insert("insertLocalAdvice", vo);
+	}
 	
 }
