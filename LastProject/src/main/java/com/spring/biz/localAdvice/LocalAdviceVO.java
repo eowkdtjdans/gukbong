@@ -15,7 +15,7 @@ public class LocalAdviceVO {
     // 게시글작성일 
     private Date l_date;
     // 게시글추천수 
-    private int l_uupvote;
+    private int l_upvote;
     // 게시글조회수 
     private int l_reviewcount;
     
@@ -51,11 +51,11 @@ public class LocalAdviceVO {
 	public void setL_date(Date l_date) {
 		this.l_date = l_date;
 	}
-	public int getL_uupvote() {
-		return l_uupvote;
+	public int getL_upvote() {
+		return l_upvote;
 	}
-	public void setL_uupvote(int l_uupvote) {
-		this.l_uupvote = l_uupvote;
+	public void setL_upvote(int l_uupvote) {
+		this.l_upvote = l_uupvote;
 	}
 	public int getL_reviewcount() {
 		return l_reviewcount;
@@ -66,7 +66,7 @@ public class LocalAdviceVO {
 	@Override
 	public String toString() {
 		return "LocalAdviceVO [l_idx=" + l_idx + ", m_id=" + m_id + ", l_subject=" + l_subject + ", l_content="
-				+ l_content + ", l_date=" + l_date + ", l_uupvote=" + l_uupvote + ", l_reviewcount=" + l_reviewcount
+				+ l_content + ", l_date=" + l_date + ", l_uupvote=" + l_upvote + ", l_reviewcount=" + l_reviewcount
 				+ "]";
 	}
 	

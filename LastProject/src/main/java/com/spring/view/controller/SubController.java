@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -14,7 +15,7 @@ public class SubController {
 	
 	HttpSession session;
 	
-	@RequestMapping("/sub.do")
+	@RequestMapping(value="/sub.do", method=RequestMethod.POST)
 	public String moveController(@RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword, Model model) {
 		System.out.println("searchCondition : " + searchCondition);
 		System.out.println("searchKeyword : " + searchKeyword);
@@ -33,6 +34,22 @@ public class SubController {
 	
 		return path;
 	}
+	
+	@RequestMapping(value="/sub.do", method=RequestMethod.GET)
+	public String moveController() {
+		return "views/sub.jsp";
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
