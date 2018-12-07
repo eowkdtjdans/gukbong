@@ -17,13 +17,18 @@ public class LocalAdviceServiceImpl implements LocalAdviceService {
 	public List<LocalAdviceVO> getLocalAdviceList(String key) {		
 		return localAdviceDAO.getLocalAdviceList(key);
 	}
+
+	@Override
+	public int countLocalAdvice(String key) {
+		return localAdviceDAO.countLocalAdvice(key);
+	}
 	
-	/*@Override
+	@Override
 	public void insertLocalAdvice(LocalAdviceVO vo) {
-		// TODO Auto-generated method stub
+		localAdviceDAO.insertLocalAdvice(vo);
 		
 	}
-
+	/*
 	@Override
 	public void updateLocalAdvice(LocalAdviceVO vo) {
 		// TODO Auto-generated method stub

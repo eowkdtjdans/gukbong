@@ -46,7 +46,25 @@
 		color:#5e7e9b;
 	}
 </style>
- 
+
+<script>	
+	function sendData(frm){
+		for (var i=0; i<frm.elements.length; i++){
+			if(frm.elements[i].value.trim() == ""){
+				alert(frm.elements[i].title + "을 입력해주세요");
+				frm.elements[i].focus();
+				return;
+			}
+		}
+		location.href=""
+		frm.submit();
+	}
+	
+	function list_go() {
+		location.href="views/sub.jsp"
+	}
+	
+</script>   
  
 </head>
 
@@ -80,10 +98,7 @@
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
-
- 
-    
-
+  
 <!-- 키워드로 검색 -->
 <form action="../sub.do" method="post">
 	<table class="border-none">
@@ -103,44 +118,44 @@
 			</td>
 		</tr>
 	</table>
-</form>
-
-
-   <!--==========================
+</form>  
+  <!--==========================
       About Us Section
     ============================-->    
 <section id="about">
-      <div class="container">
-      	<h2><strong>Find Local Advice</strong></h2>
-      	<h5>요청하신 키워드에 관한 게시글 수 : ${countLocalAdvice }</h5>
-      	<div class="text-right"><a href="../writeLocalAdvice.do" class="btn btn-outline-secondary">게시글 작성</a></div>
-      	<br>
-      	<table class="table">
-      	<c:choose>
-	      	<c:when test="${empty localAdviceList}">
-	      			<tr>
-	      				<td>요청하신 도시의 정보가 존재하지 않습니다.</td>
-	      			</tr>
-	      	</c:when>
-	      	<c:otherwise>
-      		<c:forEach var="list" items="${localAdviceList}">
-	      		<tr>
-	      			<th><a href=#>${list.l_subject }<br>${list.m_id }</a></th>
-	      			<td>${list.l_upvote } &nbsp;&nbsp; ${list.l_reviewcount }</td>
-	      		</tr>
-      		</c:forEach>
-      		</c:otherwise>
-      		
-      	</c:choose>	
-      	</table>
-      	
-      </div>
-    </section><!-- #about -->
-
-
-  
-   
-  <!--==========================
+<div class="container">
+	<div class="row from-group">	
+		<form id="frm">			
+			<table class="table">
+				<h2><strong>Write LocalAdvice</strong></h2>
+				<tr>
+					<td>SUBJECT</td>
+					<td><textarea class="form-control" rows="1" cols="150" name="l_subject" title="제목"></textarea></td>
+				</tr>
+				<tr>
+					<td>CONTENT</td>
+					<td><textarea class="form-control" rows="15" cols="150" name="l_content" title="내용"></textarea></td>	
+				</tr>
+				<tr>
+				  	<td class="text-muted" colspan="2">
+						저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시글은 이용약관 및 관련법률에 의해 제재를 받으실 수 있습니다.
+					</td>				 
+				</tr> 
+				<tr>
+					<td colspan="2">					
+						<input type="button" value="저장" class="btn btn-outline-secondary"
+							onclick="sendData(this.form)">					
+						<input type="reset" value="다시작성" class="btn btn-outline-secondary">
+						<input type="button" value="목록으로" class="btn btn-outline-secondary"
+							onclick="list_go()">
+					</td>
+				</tr>		
+			</table>			
+		</form>
+	</div>
+</div>	   
+</section><!-- #about -->
+ <!--==========================
     Footer
   ============================-->
   <footer id="footer">
@@ -209,29 +224,20 @@
         Best <a href="https://bootstrapmade.com/">Bootstrap Templates</a> by BootstrapMade
       </div>
     </div> 
-  </footer><!-- #footer -->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-  <!-- JavaScript Libraries -->
-  <script src="views/lib/jquery/jquery.min.js"></script>
-  <script src="views/lib/jquery/jquery-migrate.min.js"></script>
-  <script src="views/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="views/lib/easing/easing.min.js"></script>
-  <script src="views/lib/superfish/hoverIntent.js"></script>
-  <script src="views/lib/superfish/superfish.min.js"></script>
-  <script src="views/lib/wow/wow.min.js"></script>
-  <script src="views/lib/waypoints/waypoints.min.js"></script>
-  <script src="views/lib/counterup/counterup.min.js"></script>
-  <script src="views/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="views/lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="views/lib/lightbox/js/lightbox.min.js"></script>
-  <script src="views/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="views/contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="views/js/main.js"></script>
-
-</body>
-</html>
+  </footer><!-- #footer --> 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

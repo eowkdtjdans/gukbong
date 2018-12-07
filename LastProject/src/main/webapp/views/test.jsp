@@ -12,5 +12,6 @@
 	<a href="Travelers.jsp">travelers2</a>
 	<a href="travelers/Travelers.jsp">travelers3</a>
 	<a href="member/MemberRegister.jsp">Register</a> 
+	<a href="../getLocalAdviceList.do">로컬어드바이스 </a>
 </body>
 </html>

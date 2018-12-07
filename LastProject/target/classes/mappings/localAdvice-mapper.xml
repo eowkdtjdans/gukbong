@@ -5,9 +5,39 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="localAdviceDAO">
+	<!-- 키값으로 전체조회 -->
 	<select id="getLocalAdviceList" parameterType="String" resultType="localadvice">
 		SELECT * FROM LOCALADVICE 
 		WHERE UPPER(L_SUBJECT) LIKE '%' || UPPER(#{key}) || '%' 
 		ORDER BY M_ID
 	</select>
+	
+	<!-- 키값에 해당하는 게시글수 조회 -->
+	<select id="countLocalAdvice" parameterType="String" resultType="int">
+		SELECT COUNT(L_SUBJECT) FROM LOCALADVICE WHERE UPPER(L_SUBJECT) LIKE '%' || UPPER(#{key}) || '%'
+	</select>
+	
+	<!-- 게시글 입력 -->
+	<insert id="insertLocalAdvice" parameterType="localadvice">
+		
+	</insert>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
