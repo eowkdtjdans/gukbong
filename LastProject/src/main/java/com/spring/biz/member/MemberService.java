@@ -12,7 +12,8 @@ public interface MemberService {
 	void insertMember(MemberVO vo);
 	
 	//로그인
-	public void loginMember(MemberVO vo, Model model);
+	//public void loginMember(MemberVO vo, Model model);
+	public MemberVO loginMember(MemberVO vo, HttpSession session);
 	
 	public void logoutMember(HttpSession session);
 	

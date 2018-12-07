@@ -19,10 +19,10 @@ public class MemberDAO {
 		mybatis.insert("insertMember", vo);
 	}
 	
-	public void loginMember(MemberVO vo, Model model) {
+	public MemberVO loginMember(MemberVO vo) {
 		
 		System.out.println("======== loginMember() =========");
-		mybatis.selectOne("loginMember", vo);
+		return mybatis.selectOne("loginMember", vo);
 	}
 	
 	public void logout(HttpSession session) {
