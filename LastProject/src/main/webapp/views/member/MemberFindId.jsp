@@ -8,8 +8,8 @@
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>아이디 찾기</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrapModal/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../cssModal/my-login.css">
+	<link rel="stylesheet" type="text/css" href="views/bootstrapModal/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="views/cssModal/my-login.css">
 </head>
 <body class="my-login-page">
 	<section class="h-100">

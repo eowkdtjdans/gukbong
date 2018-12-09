@@ -8,20 +8,20 @@
 
 <script>
 	//로그인 값이 있던 없던 그냥 넘어가니까 JSON을 사용해서 데이터베이스에 있는지 체크하기.
-	function loginAjax(frm) {
-		alert("외않뒈");
-		frm.action = "../../loginMember.do";
+	function login(frm) {
+		frm.action = "../../loginMember.do"; //로그인 작업 처리
 		frm.submit();
-	}
+
+	};
 		
 </script>
 
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrapModal/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../cssModal/my-login.css">
+	<title>로그인페이지</title>
+	<link rel="stylesheet" type="text/css" href="views/bootstrapModal/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="views/cssModal/my-login.css">
 </head>
 
 <body class="my-login-page">
@@ -42,7 +42,7 @@
 
 								<div class="form-group">
 									<label for="password">비밀번호
-										<a href="forgot.html" class="float-right">
+										<a href="../../findPwdMember.do" class="float-right">
 											비밀번호 찾기
 										</a>
 									</label>
@@ -50,7 +50,7 @@
 								</div>
 
 								<div class="form-group m-0">
-									<button type="button" class="btn btn-primary btn-block" onclick="loginAjax(this.form)">
+									<button type="button" class="btn btn-primary btn-block" onclick="login(this.form)">
 										Login
 									</button>
 								</div>

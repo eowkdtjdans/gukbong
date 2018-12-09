@@ -8,16 +8,25 @@
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>회원가입</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrapModal/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../cssModal/my-login.css">
+	<link rel="stylesheet" type="text/css" href="views/bootstrapModal/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="views/cssModal/my-login.css">
 	<title>회원가입</title>
 	
- <script type="text/javascript">
- function registerAjax(frm) {
+	
+	
+ <script>
+ function register(frm) {
 		alert("외않뒈");
 		frm.action = "../../insertMember.do"; //로그인 작업 처리
 		frm.submit();
-	}
+	};
+	
+function IdCheck(frm) {
+	 var m_id = frm.m_id.value;
+	alert("m_id : " + m_id);
+}
+ 
+	
  </script>
 	
 </head>
@@ -29,11 +38,17 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title" style="text-align : center;">회원가입</h4>
-							<form method="POST" class="my-login-validation" action="../../insertMember.do">
+							<form method="POST" class="my-login-validation">
 								<div class="form-group">
 									<label for="email">아이디</label>
 									<input id="m_id" type="email" class="form-control" name="m_id" required autofocus>
 								</div>
+								
+								<div>
+									<input id="IdCheck" type="submit" class="btn btn-default btn-block" 
+									name="IdCheck" value="중복확인" onclick="IdCheck()">
+								</div>
+								
 
 								<div class="form-group">
 									<label for="password">비밀번호</label>
@@ -84,7 +99,7 @@
 								</div> -->
 
 								<div class="form-group m-0">
-									<button type="button" class="btn btn-primary btn-block" onclick="registerAjax(this.form)">
+									<button type="button" class="btn btn-primary btn-block" onclick="register(this.form)">
 										회원가입
 									</button>
 								</div>
