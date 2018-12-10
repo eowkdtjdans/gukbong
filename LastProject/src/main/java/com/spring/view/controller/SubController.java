@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("key")
+@SessionAttributes({"key","searchCondition"})
 public class SubController {
 	
 	HttpSession session;
@@ -31,7 +31,7 @@ public class SubController {
 			path = "/getLocalAdviceList.do";	
 		}
 		model.addAttribute("key", searchKeyword);
-	
+		model.addAttribute("searchCondition", searchCondition);
 		return path;
 	}
 	
