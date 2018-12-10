@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,10 +22,35 @@
 		frm.submit();
 	};
 	
-function IdCheck(frm) {
-	 var m_id = frm.m_id.value;
+/*  function idCheck(frm) {
+	 var m_id = $('#m_id').val();
 	alert("m_id : " + m_id);
-}
+	
+	$.ajax({
+		type : 'POST',
+		data : m_id,
+		url : '../../idCheck.do',
+		dataType : 'JSON',
+		   success : function(data) {
+               if (data.cnt > 0) {
+                   
+                   alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+                   $("#m_id").focus();
+                   
+               
+               } else {
+                   alert("사용가능한 아이디입니다.");
+                   //아이디가 중복하지 않으면  idck = 1 
+                   idck = 1;
+                   
+               }
+           },
+           error : function(error) {
+               
+               alert("error : " + error);
+           }
+       });
+}); */
  
 	
  </script>
@@ -44,9 +70,10 @@ function IdCheck(frm) {
 									<input id="m_id" type="email" class="form-control" name="m_id" required autofocus>
 								</div>
 								
-								<div>
-									<input id="IdCheck" type="submit" class="btn btn-default btn-block" 
-									name="IdCheck" value="중복확인" onclick="IdCheck()">
+									<div class="form-group m-0"> <!-- onclick="idCheck(this.form)" -->
+									<button type="button" class="btn btn-default btn-block" onclick="idCheck(this.form)" >
+										아이디 중복확인
+									</button>
 								</div>
 								
 
@@ -88,15 +115,15 @@ function IdCheck(frm) {
 								</div>
 						
 						
-								<!-- <div class="form-group">
+								 <div class="form-group">
 									<div class="custom-checkbox custom-control">
-										<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
-										<label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+										<input type="checkbox" name="agree" id="agree" class="custom-control-input">
+										<label for="agree" class="custom-control-label">사이트 가입 하시겠습니까? <a href="#">가입약관</a></label>
 										<div class="invalid-feedback">
 											You must agree with our Terms and Conditions
 										</div>
 									</div>
-								</div> -->
+								</div> 
 
 								<div class="form-group m-0">
 									<button type="button" class="btn btn-primary btn-block" onclick="register(this.form)">

@@ -1,10 +1,8 @@
 package com.spring.biz.member.impl;
 
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,18 +42,26 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	 @Override
+	    public MemberVO getPw(Map<String, Object> paramMap) {
+	        return memberDAO.getPw(paramMap);
+	    }
+	 @Override
+		public MemberVO getId(Map<String, Object> paramMap) {
+			return memberDAO.getId(paramMap);
+		}
+
 	@Override
-	public List<MemberVO> idCheck(MemberVO vo) throws Exception {
-		
-		return memberDAO.idCheck(vo);
+	public int idCheck(String m_id) {
+		return memberDAO.idCheck(m_id);
 	}
 
 
-	@Override
-	public String getPw(Map<String, Object> paramMap) {
-		// TODO Auto-generated method stub
-		return memberDAO.getPw(paramMap);
-	}
+	
+
+
+
+
 
 
 

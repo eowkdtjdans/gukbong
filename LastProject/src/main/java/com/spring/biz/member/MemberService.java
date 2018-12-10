@@ -5,6 +5,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.aop.ThrowsAdvice;
+
+
 public interface MemberService {
 	
 	//회원가입
@@ -17,11 +20,18 @@ public interface MemberService {
 	public void logoutMember(HttpSession session) throws Exception;
 
 
-	public List<MemberVO> idCheck(MemberVO vo) throws Exception;
+	//public int idCheck(String m_id) throws Exception;
 	
 	
+	//아이디 찾기
+	public MemberVO getId(Map<String, Object> paramMap);
 	//비밀번호 찾기
-	public String getPw(Map<String, Object> paramMap);
+	 public MemberVO getPw(Map<String, Object> paramMap);
+
+	int idCheck(String m_id);
+
+	
+
 	
 
 		

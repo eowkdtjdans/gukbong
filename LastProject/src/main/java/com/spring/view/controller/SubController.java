@@ -40,14 +40,13 @@ public class SubController {
 	
 	@RequestMapping(value="/sub2.do", method=RequestMethod.GET)
 	public String moveController() {
-		System.out.println("sub.do === g=et방식");
-		System.out.println("sub.do 겟방식");
+		System.out.println("sub2.do === g=et방식");
 		return "views/sub.jsp";
 	}
 	
 	@RequestMapping(value="/sub2.do", method=RequestMethod.POST)
 	public String moveController2() {
-		System.out.println("sub.do 겟방식");
+		System.out.println("sub.do 포스트방식");
 		return "views/sub.jsp";
 	}
 	

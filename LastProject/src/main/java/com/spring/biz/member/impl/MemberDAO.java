@@ -37,13 +37,17 @@ public class MemberDAO {
 	}
 
 	//아이디 중복확인
-	public List<MemberVO> idCheck(MemberVO vo) {
-		List<MemberVO> list = mybatis.selectOne("idCheck", vo);
-		return list;
+	public int idCheck(String m_id) {
+		return mybatis.selectOne("idCheck", m_id);
+	}
+	
+	//비밀번호 찾기
+	public MemberVO getPw(Map<String, Object> paramMap) {
+		return mybatis.selectOne("getPw", paramMap);
 	}
 
-	public String getPw(Map<String, Object> paramMap) {
-		return mybatis.selectOne("getPw", paramMap);
+	public MemberVO getId(Map<String, Object> paramMap) {
+		return mybatis.selectOne("getId", paramMap);
 	}
 	
 

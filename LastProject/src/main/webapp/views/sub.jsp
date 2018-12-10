@@ -74,8 +74,8 @@
           <li><a href="#about">쪽지</a></li>
           <li><a href="#portfolio">마이 프로필</a></li>      
           
-          <li><a href="../../findIdmember.do">아이디</a></li>
-          <li><a href="../../findPwdmember.do">비밀번호</a></li>
+          <li><a href="../../findIdMember.do">아이디</a></li>
+          <li><a href="../../findPwdMember.do">비밀번호</a></li>
           <li><a href="../../logoutMember.do">로그아웃</a></li>
           <li><a href="../../loginMember.do" >로그인</a></li>
 		  <li><a  href="../../insertMember.do" >회원가입</a></li>   

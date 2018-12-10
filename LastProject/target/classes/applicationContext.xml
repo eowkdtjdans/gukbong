@@ -60,7 +60,7 @@
          
     </bean>
      
-    <bean id="email" class="com.spring.biz.member.Email"/>
+    <bean id="email" class="com.spring.biz.member.Email"></bean>
     <bean id="emailSender" class="com.spring.biz.member.EmailSender"/>
 
 	

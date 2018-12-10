@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,6 +18,7 @@
 	function findPwd(frm) {
 		frm.action="../../findPwdMember.do";
 		frm.submit();
+		return false;
 	};
 </script>	
 	
@@ -36,7 +38,7 @@
 							<form method="POST" class="my-login-validation">
 								<div class="form-group">
 									<label for="m_email">ID</label>
-									<input id="m_id" type="email" class="form-control" name="m_id" required autofocus>
+									<input id="m_id" type="email" class="form-control" name="m_id" placeholder="아이디를 입력하세요." required autofocus>
 
 									<div class="form-text text-muted">
 										By clicking "Reset Password" we will send a password reset link
@@ -45,7 +47,7 @@
 								
 									<div class="form-group">
 									<label for="m_phone">전화번호</label>
-									<input id="m_phone" type="text" class="form-control" name="m_id" required autofocus>
+									<input id="m_phone" type="text" class="form-control" name="m_phone" placeholder="전화번호를 입력하세요." required autofocus>
 
 								</div>
 
