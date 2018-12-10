@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("key")
+@SessionAttributes({"key","searchCondition"})
 public class SubController {
 	
 	HttpSession session;
@@ -31,11 +31,12 @@ public class SubController {
 			path = "/getLocalAdviceList.do";	
 		}
 		model.addAttribute("key", searchKeyword);
-	
+		model.addAttribute("searchCondition", searchCondition);
 		return path;
 	}
 	
 
+<<<<<<< HEAD
 	
 	
 	@RequestMapping(value="/sub2.do", method=RequestMethod.GET)
@@ -62,15 +63,36 @@ public class SubController {
 	
 	
 	
+=======
+   
+   
+   @RequestMapping(value="/sub2.do", method=RequestMethod.GET)
+   public String moveController() {
+      System.out.println("sub.do === g=et방식");
+      System.out.println("sub.do 겟방식");
+      return "views/sub.jsp";
+   }
+   
+   @RequestMapping(value="/sub2.do", method=RequestMethod.POST)
+   public String moveController2() {
+      System.out.println("sub.do 겟방식");
+      return "views/sub.jsp";
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+>>>>>>> branch 'master' of https://github.com/eowkdtjdans/gukbong.git
 }
-
-
-
-
-
-
-
-
 
 
 

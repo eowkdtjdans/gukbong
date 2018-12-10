@@ -145,7 +145,7 @@ public class MemberController {
     	System.out.println("m_id : " + m_id);
     	System.out.println("m_phone : " + m_phone);
     	MemberVO vo= memberService.getPw(paramMap);
-    	
+    	 
     	if(vo.getM_pwd() != null) {
     		email.setSubject(" [국봉월드] " + m_id+"님 비밀번호 찾기 이메일입니다.");
     		email.setReceiver(m_id);

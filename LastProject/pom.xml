@@ -68,7 +68,7 @@
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-mail</artifactId>
             <version>4.3.8.RELEASE</version>
-        </dependency>
+        </dependency> 
 	
 		<!-- 오라클 JDBC 라이브러리 등록 -->
 		<dependency>

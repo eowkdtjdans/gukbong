@@ -9,7 +9,7 @@
 	<select id="getLocalAdviceList" parameterType="String" resultType="localadvice">
 		SELECT * FROM LOCALADVICE 
 		WHERE UPPER(L_SUBJECT) LIKE '%' || UPPER(#{key}) || '%' 
-		ORDER BY M_ID
+		ORDER BY L_IDX DESC
 	</select>
 	
 	<!-- 키값에 해당하는 게시글수 조회 -->
