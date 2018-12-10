@@ -10,7 +10,7 @@ import com.spring.biz.localAdvice.LocalAdviceVO;
 
 @Repository("localAdviceDAO")
 public class LocalAdviceDAO {
-	@Autowired
+	@Autowired   
 	private SqlSessionTemplate mybatis;
 	
 	//현지정보 문의게시판 전체조회

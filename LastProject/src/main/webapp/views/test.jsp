@@ -16,7 +16,9 @@
 	<a href="../insertMember.do">Register</a> 
 	<a href="../loginMember.do">Login</a> 
 	<a href="../logoutMember.do">logout</a> 
-	<a href="../sub.do">sub페이지</a>  
+	<a href="../sub2.do">sub페이지</a>  
+	<a href="../findIdmember.do">아이디 찾기페이지</a>  
+	<a href="../findPwdMember.do">비밀번호 찾기페이지</a>  
 	<p>세션 : [${m_id}] 앙기무리</p>
 </body>
 </html>
