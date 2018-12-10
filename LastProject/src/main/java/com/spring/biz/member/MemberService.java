@@ -5,18 +5,29 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.ui.Model;
-
 public interface MemberService {
 	
 	//회원가입
-	void insertMember(MemberVO vo);
+	 void insertMember(MemberVO vo) throws Exception;
 	
 	//로그인
-	//public void loginMember(MemberVO vo, Model model);
-	public MemberVO loginMember(MemberVO vo, HttpSession session);
+	public MemberVO loginMember(MemberVO vo, HttpSession session) throws Exception;
 	
-	public void logoutMember(HttpSession session);
+	//로그아웃
+	public void logoutMember(HttpSession session) throws Exception;
+
+
+	public List<MemberVO> idCheck(MemberVO vo) throws Exception;
 	
 	
+	//비밀번호 찾기
+	public String getPw(Map<String, Object> paramMap);
+	
+
+		
+
+
+	
+
+
 }

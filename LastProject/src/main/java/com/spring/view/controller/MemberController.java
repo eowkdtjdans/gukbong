@@ -1,5 +1,6 @@
 package com.spring.view.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.biz.member.Email;
 import com.spring.biz.member.EmailSender;
@@ -125,9 +127,9 @@ public String loginPost(@RequestParam("m_id") String m_id, @RequestParam("m_pwd"
     	String m_pwd= memberService.getPw(paramMap);
     	System.out.println(m_pwd);
     	if(m_pwd != null) {
+    		email.setSubject(m_id+"님 비밀번호 찾기 이메일입니다.");
     		email.setContent("비밀번호는 [ "+m_pwd+ "]입니다.");
     		email.setReceiver(m_id);
-    		email.setSubject(m_id+"�� ��й�ȣ ã�� �����Դϴ�.");
     		emailSender.SendEmail(email);
             return "/sub2.do";
     	}else {

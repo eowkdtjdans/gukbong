@@ -4,12 +4,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>회원가입</title>
+
+<script>
+	//로그인 값이 있던 없던 그냥 넘어가니까 JSON을 사용해서 데이터베이스에 있는지 체크하기.
+	function login(frm) {
+		frm.action = "../../loginMember.do"; //로그인 작업 처리
+		frm.submit();
+
+	};
+		
+</script>
+
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrapModal/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../cssModal/my-login.css">
+	<title>로그인페이지</title>
+	<link rel="stylesheet" type="text/css" href="views/bootstrapModal/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="views/cssModal/my-login.css">
 </head>
 
 <body class="my-login-page">
@@ -22,7 +34,7 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title" style="text-align : center;">로그인</h4>
-							<form method="POST" class="my-login-validation" action="../../loginMember.do">
+							<form method="POST" class="my-login-validation">
 								<div class="form-group">
 									<label for="email">아이디</label>
 									<input id="m_id" type="email" class="form-control" name="m_id" required autofocus>
@@ -30,33 +42,26 @@
 
 								<div class="form-group">
 									<label for="password">비밀번호
-										<a href="forgot.html" class="float-right">
+										<a href="../../findPwdMember.do" class="float-right">
 											비밀번호 찾기
 										</a>
 									</label>
 									<input id="m_pwd" type="password" class="form-control" name="m_pwd" required data-eye>
 								</div>
 
-								<!-- <div class="form-group">
-									<div class="custom-checkbox custom-control">
-										<input type="checkbox" name="remember" id="remember" class="custom-control-input">
-										<label for="remember" class="custom-control-label">Remeber Me</label>
-									</div>
-								</div> -->
-
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block">
+									<button type="button" class="btn btn-primary btn-block" onclick="login(this.form)">
 										Login
 									</button>
 								</div>
 								<div class="mt-4 text-center">
-									아이디가 없으십니까? <a href="register.html">Create One</a>
+									아이디가 없으십니까? <a href="../../insertMember.do">회원가입</a>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; 2017 &mdash; Your Company 
+						Copyright &copy; 2018 &mdash; 국봉쓰
 					</div>
 				</div>
 			</div>

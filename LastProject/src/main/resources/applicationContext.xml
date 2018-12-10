@@ -43,7 +43,25 @@
 		<constructor-arg ref="sqlSession"></constructor-arg>
 	</bean>	
 	
-
+	<!-- email 인증 : gmail -->
+    <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="username" value="gukbong2459@gmail.com" />
+        <property name="password" value="a032003!" />
+        
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+            </props>
+        </property>
+         
+    </bean>
+     
+    <bean id="email" class="com.spring.biz.member.Email"/>
+    <bean id="emailSender" class="com.spring.biz.member.EmailSender"/>
 
 	
 	

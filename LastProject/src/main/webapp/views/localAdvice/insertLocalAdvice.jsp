@@ -56,12 +56,13 @@
 				return;
 			}
 		}
-		location.href=""
+		alert("스크립트");
+		frm.action="../insertLocalAdvice.do";
 		frm.submit();
 	}
 	
 	function list_go() {
-		location.href="views/sub.jsp"
+		location.href="../sub2.do";
 	}
 	
 </script>   
@@ -77,7 +78,7 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="views/sub.jsp" class="scrollto">Couch Surfing</a></h1>
+        <h1><a href="views/sub2.jsp" class="scrollto">Couch Surfing</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
@@ -114,7 +115,7 @@
 					<option value="find_advice">현지정보검색
 				</select>
 				<input type="text" name="searchKeyword">
-				<input type="submit" value="검색">
+				<input type="submit" value="검색">				
 			</td>
 		</tr>
 	</table>
@@ -125,7 +126,7 @@
 <section id="about">
 <div class="container">
 	<div class="row from-group">	
-		<form id="frm">			
+		<form id="frm" method="post">			
 			<table class="table">
 				<h2><strong>Write LocalAdvice</strong></h2>
 				<tr>
@@ -148,6 +149,8 @@
 						<input type="reset" value="다시작성" class="btn btn-outline-secondary">
 						<input type="button" value="목록으로" class="btn btn-outline-secondary"
 							onclick="list_go()">
+						<input type="hidden" name="searchCondition" value="${searchCondition }">
+						<input type="hidden" name="searchKeyword" value="${key }" >
 					</td>
 				</tr>		
 			</table>			
