@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 태그의 namespace 속성 필수 작성 -->
+
+<mapper namespace="ProfileDAO">
+
+<update id="modifyProfile" parameterType="profile" > 
+UPDATE PROFILE SET 
+P_HOBBY = #{p_hobby}, P_LANGUAGE = #{p_language}, 
+P_JOB = #{p_job}, P_ABOUTME = #{p_aboutme}, 
+P_PURPOSE = #{p_purpose}, 
+P_VISITCOUNTRY = #{p_visitcountry} WHERE M_ID = #{m_id} 
+</update>
+
+<!-- 인서트문 -->
+<insert id="insertProfile" parameterType="profile"> 
+INSERT INTO PROFILE 
+(M_ID, P_HOBBY, P_LANGUAGE, P_JOB, P_ABOUTME, P_PURPOSE, P_VISITCOUNTRY) 
+VALUES (#{m_id}, #{p_hobby}, #{p_language}, #{p_job}, #{p_aboutme}, #{p_purpose}, #{p_visitcountry}) 
+</insert>
+
+<select id="insertProfileJson" parameterType="String" resultType="Integer">
+	SELECT COUNT(*) FROM PROFILE
+	WHERE M_ID = #{m_id}
+</select>
+
+</mapper>

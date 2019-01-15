@@ -12,14 +12,39 @@
 	<link rel="stylesheet" type="text/css" href="views/bootstrapModal/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="views/cssModal/my-login.css">
 	
-	
 <script>
 
 	function findPwd(frm) {
-		frm.action="../../findPwdMember.do";
-		frm.submit();
-		return false;
+		 var str = $("#form").serialize();
+		 $.ajax({
+			async : true,
+			type : "POST",
+			dataType : "json",
+			data : str,
+			url : "../../findPwdMemberJson.do",
+			success : function(data) {
+				if (data.cnt > 0) {
+					alert("기입하신 이메일을 확인하세요!");
+					frm.action="../../findPwdMember.do";
+					frm.submit(); 
+					return false;
+				} else {
+					alert("회원정보가 없습니다. 다시 입력하세요.");
+					frm.m_id.value = "";
+					frm.m_phone.value = "";
+					frm.m_name.value = "";
+					frm.m_id.focus();
+				}
+				
+			},
+		}); 
+		
 	};
+	function enterkey(event) {
+		if(event.keyCode == 13) {
+			$("#findBtn").click();
+		}
+	}
 </script>	
 	
 	
@@ -35,27 +60,32 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">비밀번호 찾기</h4>
-							<form method="POST" class="my-login-validation">
+							<form method="POST" onsubmit="return false;"class="my-login-validation" id="form">
 								<div class="form-group">
 									<label for="m_email">ID</label>
-									<input id="m_id" type="email" class="form-control" name="m_id" placeholder="아이디를 입력하세요." required autofocus>
-
-									<div class="form-text text-muted">
-										By clicking "Reset Password" we will send a password reset link
-									</div>
+									<input id="m_id" onkeypress="enterkey()"type="email" class="form-control" name="m_id" placeholder="아이디를 입력하세요." required autofocus>
 								</div>
 								
-									<div class="form-group">
+								<div class="form-group">
+									<label for="m_name">성함</label>
+									<input id="m_name" onkeypress="enterkey()"type="text" class="form-control" name="m_name" placeholder="이름을 입력하세요." required autofocus>
+								</div>
+								
+								<div class="form-group">
 									<label for="m_phone">전화번호</label>
-									<input id="m_phone" type="text" class="form-control" name="m_phone" placeholder="전화번호를 입력하세요." required autofocus>
-
+									<input id="m_phone" onkeypress="enterkey()"type="text" class="form-control" name="m_phone" placeholder="전화번호를 입력하세요." required autofocus>
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block" onclick="findPwd(this.form)">
+									<button type="submit" id="findBtn"class="btn btn-primary btn-block" onclick="findPwd(this.form)">
 										비밀번호 찾기
 									</button>
 								</div>
+								
+								<a href="../../findIdMember.do" class="float-right">
+									아이디 찾기
+								</a>
+								
 							</form>
 						</div>
 					</div>

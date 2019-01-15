@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!--   <typeAliases>
+  	<typeAlias alias="member" type="com.spring.biz.member.MemberVO"/>
+  </typeAliases> -->
+  
+  <typeAliases>
+  	<typeAlias alias="travelers" type="com.spring.biz.travelers.TravelersVO"/>
+  	<typeAlias alias="member" type="com.spring.biz.member.MemberVO"/>
+  	<typeAlias alias="localadvice" type="com.spring.biz.localAdvice.LocalAdviceVO"/>
+  	<typeAlias alias="localadvicecomment" type="com.spring.biz.localAdviceComment.LocalAdviceCommentVO"/>
+  	<typeAlias alias="google" type="com.spring.biz.google.GoogleVO"/>
+  	<typeAlias alias="host" type="com.spring.biz.host.HostVO"/>
+  	<typeAlias alias="event" type="com.spring.biz.event.EventVO"/>
+  	<typeAlias alias="profile" type="com.spring.biz.profile.ProfileVO"/>
+  	<typeAlias alias="message" type="com.spring.biz.messsage.MessageVO"/>
+  </typeAliases>
+  
+  <mappers>
+    <mapper resource="mappings/host-mapper.xml"/>
+    <mapper resource="mappings/localAdvice-mapper.xml"/>
+    <mapper resource="mappings/localAdviceComment-mapper.xml"/>
+    <mapper resource="mappings/member-mapper.xml"/>
+    <mapper resource="mappings/profile-mapper.xml"/>
+    <mapper resource="mappings/profileImage-mapper.xml"/>
+    <mapper resource="mappings/review-mapper.xml"/>
+    <mapper resource="mappings/travelers-maaper.xml"/>
+    <mapper resource="mappings/country-mapper.xml"/>
+    <mapper resource="mappings/countryImage-mapper.xml"/>
+    <mapper resource="mappings/google-maaper.xml"/>
+    <mapper resource="mappings/event-mapper.xml"/>
+    <mapper resource="mappings/message-mapper.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+
+

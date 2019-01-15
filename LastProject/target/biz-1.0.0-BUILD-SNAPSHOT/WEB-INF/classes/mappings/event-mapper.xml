@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="eventDAO">
+	
+	<select id="getEventList" resultType="event" parameterType="Map">
+		SELECT R_NUM, E3.*
+        FROM (SELECT ROWNUM R_NUM, E2.* FROM (SELECT E.* FROM EVENT E ORDER BY E_STARTDATE ASC) E2) E3
+	    WHERE E3.E_ADDRESS LIKE '%' || UPPER(#{key}) || '%'
+	    AND (R_NUM BETWEEN #{begin} AND #{end})
+	</select>
+	
+	<select id="countEvent" parameterType="String" resultType="int">
+		SELECT COUNT(E_IDX) FROM EVENT WHERE UPPER(E_ADDRESS) LIKE '%' || UPPER(#{key}) || '%'
+	</select>
+	
+</mapper>

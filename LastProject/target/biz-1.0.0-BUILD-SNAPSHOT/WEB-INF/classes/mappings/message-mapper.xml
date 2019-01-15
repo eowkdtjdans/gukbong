@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="messageDAO">
+	
+	<insert id="insertMessage" parameterType="message">
+		INSERT INTO MESSAGE(MSG_IDX, MSG_SENDER, MSG_RECEIVER, MSG_TITLE, MSG_CONTENT)
+		VALUES (MSG_SEQ.NEXTVAL, #{msg_sender}, #{msg_receiver}, #{msg_title}, #{msg_content})
+		
+	</insert>
+	
+	
+</mapper>

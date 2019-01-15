@@ -47,25 +47,35 @@
 	}
 </style>
 
-<script>	
+<script>		 
 	function sendData(frm){
-		for (var i=0; i<frm.elements.length; i++){
-			if(frm.elements[i].value.trim() == ""){
-				alert(frm.elements[i].title + "을 입력해주세요");
-				frm.elements[i].focus();
-				return;
-			}
+	    if("${member.m_id}"==""){
+	    	alert("로그인이 필요한 서비스입니다.");
+	   		return false;
+	    }
+	    
+		if(frm.elements[0].value.trim()==""){
+			alert(frm.elements[0].title + "을 입력해주세요");
+			frm.elements[0].focus();
+			return false;
 		}
-		alert("스크립트");
+		if(frm.elements[1].value.trim()==""){
+			alert(frm.elements[1].title + "을 입력해주세요");
+			frm.elements[1].focus();
+			return false;
+		}
 		frm.action="../insertLocalAdvice.do";
 		frm.submit();
 	}
+	
 	
 	function list_go() {
 		location.href="../sub2.do";
 	}
 	
 </script>   
+
+
  
 </head>
 
@@ -126,7 +136,7 @@
 <section id="about">
 <div class="container">
 	<div class="row from-group">	
-		<form id="frm" method="post">			
+		<form name="frm" method="post">			
 			<table class="table">
 				<h2><strong>Write LocalAdvice</strong></h2>
 				<tr>
@@ -150,14 +160,35 @@
 						<input type="button" value="목록으로" class="btn btn-outline-secondary"
 							onclick="list_go()">
 						<input type="hidden" name="searchCondition" value="${searchCondition }">
+						${searchCondition }, ${key }, ${member.m_address}, ${firstLat}, ${firstLng}
 						<input type="hidden" name="searchKeyword" value="${key }" >
+						<input type="hidden" name="m_address" value="${member.m_address}">
+						<input type="hidden" name="lat" value="${firstLat}">
+						<input type="hidden" name="lng" value="${firstLng}">
 					</td>
 				</tr>		
 			</table>			
 		</form>
+		
+		
 	</div>
 </div>	   
 </section><!-- #about -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <!--==========================
     Footer
   ============================-->

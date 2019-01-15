@@ -16,6 +16,20 @@ public class MemberVO {
 	    // 생일 
 	    private String m_birthday;
 	    // 주소 
+	    private double lat;
+	    
+	    private String m_certify;
+	 
+
+		public String getM_certify() {
+			return m_certify;
+		}
+
+		public void setM_certify(String m_certify) {
+			this.m_certify = m_certify;
+		}
+
+		private double lng;
 	    private String m_address;
 	    // 가입일 
 	    private Date m_regdate;
@@ -24,8 +38,8 @@ public class MemberVO {
 			return m_id;
 		}
 
-		public void setM_id(String m_id) {
-			this.m_id = m_id;
+		public String setM_id(String m_id) {
+			return this.m_id = m_id;
 		}
 
 		public String getM_pwd() {
@@ -68,13 +82,6 @@ public class MemberVO {
 			this.m_birthday = m_birthday;
 		}
 
-		public String getM_address() {
-			return m_address;
-		}
-
-		public void setM_address(String m_address) {
-			this.m_address = m_address;
-		}
 
 		public Date getM_regdate() {
 			return m_regdate;
@@ -84,19 +91,40 @@ public class MemberVO {
 			this.m_regdate = m_regdate;
 		}
 
+		public double getLat() {
+			return lat;
+		}
+
+		public void setLat(double lat) {
+			this.lat = lat;
+		}
+
+		public double getLng() {
+			return lng;
+		}
+
+		public void setLng(double lng) {
+			this.lng = lng;
+		}
+
+		public String getM_address() {
+			return m_address;
+		}
+
+		public void setM_address(String m_address) {
+			this.m_address = m_address;
+		}
+
 		@Override
 		public String toString() {
 			return "MemberVO [m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_phone=" + m_phone
-					+ ", m_gender=" + m_gender + ", m_birthday=" + m_birthday + ", m_address=" + m_address
-					+ ", m_regdate=" + m_regdate + "]";
+					+ ", m_gender=" + m_gender + ", m_birthday=" + m_birthday + ", lat=" + lat + ", m_certify="
+					+ m_certify + ", lng=" + lng + ", m_address=" + m_address + ", m_regdate=" + m_regdate + "]";
 		}
 
 
-	    
-	    
-	    
-	    
-	    
+	
+		
 	    
 	
 	    

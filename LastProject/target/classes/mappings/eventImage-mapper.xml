@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="eventImageDAO">
+	<select id="getEventImageList" parameterType="int" resultType="com.spring.biz.eventImage.EventImageVO">
+		SELECT * FROM EVENT_IMAGE WHERE E_IDX=#{e_idx} ORDER BY E_MAIN ASC
+	</select>
+</mapper>

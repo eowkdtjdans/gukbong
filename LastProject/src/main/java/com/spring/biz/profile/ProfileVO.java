@@ -5,7 +5,7 @@ public class ProfileVO {
     private String m_id;
     // 취미 
     private String p_hobby;
-    // 사용언어 
+    // 사용언어
     private String p_language;
     // 직업 
     private String p_job;
@@ -15,13 +15,17 @@ public class ProfileVO {
     private String p_purpose;
     // 방문해본국가 
     private String p_visitcountry;
-    // 본인사진 
+    //사진
+    
+    private String p_route;
+    public String getP_route() {
+		return p_route;
+	}
+	public void setP_route(String p_route) {
+		this.p_route = p_route;
+	}
+	// 본인사진 
     private String p_image;
-    
-    
-    
-    
-    
 	public String getM_id() {
 		return m_id;
 	}
@@ -74,11 +78,17 @@ public class ProfileVO {
 	public String toString() {
 		return "ProfileVO [m_id=" + m_id + ", p_hobby=" + p_hobby + ", p_language=" + p_language + ", p_job=" + p_job
 				+ ", p_aboutme=" + p_aboutme + ", p_purpose=" + p_purpose + ", p_visitcountry=" + p_visitcountry
-				+ ", p_image=" + p_image + "]";
+				+ ", p_route=" + p_route + ", p_image=" + p_image + "]";
 	}
+}
+    
+    
+    
+    
+    
+	
 
 	
     
     
 	
-}

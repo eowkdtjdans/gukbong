@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="googleDAO">
+	
+	<select id="getGoogle" resultType="google">
+		SELECT H.M_ID M_ID, PI.P_ROUTE P_ROUTE, H_MAXIMUMGUEST MAXIMUMGUEST, H_STARTDATE STARTDATE, H_ENDDATE ENDDATE, M.LAT, M.LNG, M.M_NAME
+		FROM PROFILE_IMAGE PI, HOST H, MEMBER M
+		WHERE H.M_ID = PI.M_ID
+        AND PI.M_ID = M.M_ID
+		ORDER BY PI.P_ROUTE
+	</select>
+	
+</mapper>

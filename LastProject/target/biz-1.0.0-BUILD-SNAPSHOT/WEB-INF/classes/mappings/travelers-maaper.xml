@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="trevelerDAO">
+	<select id="getTravelersList" parameterType="String" resultType="travelers">
+		SELECT T.*, PI.P_ROUTE FROM TRAVELERS T, MEMBER M, PROFILE_IMAGE PI
+		WHERE UPPER(T.T_COUNTRY) LIKE '%' || UPPER(#{key}) || '%'
+        AND T.M_ID = M.M_ID
+        AND PI.M_ID = M.M_ID
+		ORDER BY T.M_ID
+	</select>
+	
+	<select id="countTravelers" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM TRAVELERS WHERE UPPER(T_COUNTRY) LIKE '%' || UPPER(#{key}) || '%'
+	</select>
+</mapper>

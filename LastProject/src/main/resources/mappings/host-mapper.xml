@@ -6,4 +6,48 @@
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="hostDAO">
 
+	<select id="getHostList" parameterType="Map" resultType="host">
+       SELECT R_NUM, H3.*
+       FROM (SELECT ROWNUM R_NUM, H2.* FROM (SELECT H.*, PI.P_ROUTE, M.M_ADDRESS, M.M_NAME FROM HOST H, PROFILE_IMAGE PI, MEMBER M WHERE H.M_ID = PI.M_ID AND PI.M_ID = M.M_ID AND PI.P_MAIN = 1 AND M.M_ADDRESS LIKE '%' || UPPER(#{key}) || '%' ORDER BY H_STARTDATE DESC) H2) H3
+       WHERE H3.H_ENDDATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+       AND (R_NUM BETWEEN #{begin} AND #{end})
+	</select>
+	
+	<insert id="insertHost" parameterType="host">
+		INSERT INTO HOST 
+		(M_ID, H_MAXIMUMGUEST, H_GENDER, H_SMOKE, H_ROOMTYPE,
+		 H_RULE, H_STARTDATE, H_HASPET, H_HASCHILD, H_ENDDATE)
+		VALUES (#{m_id}, #{h_maximumguest}, #{h_gender}, #{h_smoke}, #{h_roomtype}, 
+		#{h_rule}, #{h_startdate}, #{h_haspet}, #{h_haschild}, #{h_enddate})    
+	</insert>
+	
+	<update id="updateHost" parameterType="host">
+		UPDATE HOST SET H_MAXIMUMGUEST = #{h_maximumguest},
+						H_GENDER = #{h_gender},
+						H_SMOKE = #{h_smoke},
+						H_ROOMTYPE = #{h_roomtype},
+						H_RULE = #{h_rule},
+						H_STARTDATE = #{h_startdate},
+						H_HASPET = #{h_haspet},
+						H_HASCHILD = #{h_haschild},
+						H_ENDDATE = #{h_enddate}
+					WHERE M_ID = #{m_id}
+	</update>
+	
+	<delete id="deleteHost">
+		DELETE FROM HOST WHERE M_ID = #{m_id}
+	</delete>
+	
+	<select id="checkHostJson" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM HOST
+		WHERE M_ID = #{m_id}
+	</select>
+	
+	<select id="countHost" parameterType="String" resultType="int">
+		SELECT COUNT(H.M_ID)
+		FROM HOST H, MEMBER M
+		WHERE UPPER(M.M_ADDRESS) LIKE '%' || UPPER(#{key}) || '%'
+		AND H.M_ID = M.M_ID
+	</select>
+
 </mapper>

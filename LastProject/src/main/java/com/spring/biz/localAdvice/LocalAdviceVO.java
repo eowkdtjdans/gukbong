@@ -19,6 +19,11 @@ public class LocalAdviceVO {
     // 게시글조회수 
     private int l_reviewcount;
     
+    private String m_address;
+    
+    private String p_route;
+    
+    private int lc_cnt;
     
     
 	public int getL_idx() {
@@ -63,15 +68,33 @@ public class LocalAdviceVO {
 	public void setL_reviewcount(int l_reviewcount) {
 		this.l_reviewcount = l_reviewcount;
 	}
+	public String getM_address() {
+		return m_address;
+	}
+	public void setM_address(String m_address) {
+		this.m_address = m_address;
+	}
+		
+	public String getP_route() {
+		return p_route;
+	}
+	public void setP_route(String p_route) {
+		this.p_route = p_route;
+	}
+
+	public int getLc_cnt() {
+		return lc_cnt;
+	}
+	public void setLc_cnt(int lc_cnt) {
+		this.lc_cnt = lc_cnt;
+	}
 	@Override
 	public String toString() {
 		return "LocalAdviceVO [l_idx=" + l_idx + ", m_id=" + m_id + ", l_subject=" + l_subject + ", l_content="
-				+ l_content + ", l_date=" + l_date + ", l_uupvote=" + l_upvote + ", l_reviewcount=" + l_reviewcount
-				+ "]";
+				+ l_content + ", l_date=" + l_date + ", l_upvote=" + l_upvote + ", l_reviewcount=" + l_reviewcount
+				+ ", m_address=" + m_address + ", p_route=" + p_route + ", lc_cnt=" + lc_cnt + "]";
 	}
 	
-    
-    
-	
+
     
 }

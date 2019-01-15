@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 비즈니스 영역의 빈생성 및 필드 주입 처리 -->
+	<!-- @Component 어노테이션 설정된 클래스 객체생성 및 주입 -->
+	<context:component-scan base-package="com.spring.biz"/>
+	
+	<!-- ============================ -->
+	<!-- Spring JDBC 관련 설정 -->
+	<!-- DataSource 설정 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+			destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@203.236.209.185:1521:xe"/>
+		<property name="username" value="LAST_PROJECT"/>
+		<property name="password" value="1234"/>
+	</bean>
+	
+	<!-- 스프링 JDBC : JdbcTemplate 객체 생성 설정 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>	
+	
+	<!-- ========================== -->
+	<!-- 스프링-마이바티스 연동설정 -->
+	<!-- 방법1 : SqlSessionDaoSupport 상속구현 -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" 
+				value="classpath:mybatis-config.xml"/>
+	</bean>
+	
+	<!-- 방법2 : SqlSessionTemplate 사용 -->
+	<!-- SqlSessionFactoryBean 객체를 필드 주입 받아서 사용 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
+	</bean>	
+	
+	<!-- email 인증 : gmail -->
+    <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="username" value="gukbongworld@gmail.com" />
+        <property name="password" value="bitcamp1!" />
+        
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+            </props>
+        </property>
+         
+    </bean>
+     
+    <bean id="email" class="com.spring.biz.member.Email"></bean>
+    <bean id="emailSender" class="com.spring.biz.member.EmailSender"/>
+    
+    <!-- ========== 구글 로그인 api 관련 ========== -->
+    <!-- Google 소셜 로그인 연결 설정 -->
+	<bean id = "googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="320127136039-j4l8hms8087fdjorf8pnsphbi9rdhn86.apps.googleusercontent.com"/>
+		<constructor-arg value="BNVtt7U9mN3SVy8dGSP5wvyG"/>
+	</bean>
+	 
+	<bean id = "googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"></property>
+		<property name="redirectUri" value="http://localhost:8080/googleCallback.do"/>
+	</bean>
+	
+	<bean id="naverLoginBO" class="com.spring.biz.loginAPI.NaverLoginBO"></bean>
+	
+	<!-- Facebook 소셜 로그인 연결 설정 -->
+ 
+    <bean id="connectionFactory"
+        class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+        <constructor-arg value="517079855476323" />
+        <constructor-arg value="e26ecaabefd6ba3b687ceff180eb1c98" />
+    </bean>
+ 
+    <bean id="oAuth2Parameters"
+        class="org.springframework.social.oauth2.OAuth2Parameters">
+        <property name="scope" value="email" />
+        <property name="redirectUri" value="http://localhost:8080/facebookSignInCallback.do" />
+    </bean>
+</beans>

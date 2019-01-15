@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="hostDAO">
+
+	<select id="getHostList" parameterType="Map" resultType="host">
+		SELECT R_NUM, H3.*
+        FROM (SELECT ROWNUM R_NUM, H2.* FROM (SELECT H.*, PI.P_ROUTE, M.M_ADDRESS FROM HOST H, PROFILE_IMAGE PI, MEMBER M WHERE H.M_ID = PI.M_ID AND PI.M_ID = M.M_ID AND PI.ROWID IN (SELECT MIN(ROWID) FROM PROFILE_IMAGE GROUP BY M_ID) ORDER BY H_STARTDATE ASC) H2) H3
+	    WHERE H3.M_ADDRESS LIKE '%' || UPPER(#{key}) || '%'
+	    AND (R_NUM BETWEEN #{begin} AND #{end})
+	</select>
+	
+	<select id="countHost" parameterType="String" resultType="int">
+		SELECT COUNT(H.M_ID)
+		FROM HOST H, MEMBER M
+		WHERE UPPER(M.M_ADDRESS) LIKE '%' || UPPER(#{key}) || '%'
+		AND H.M_ID = M.M_ID
+	</select>
+
+</mapper>

@@ -6,4 +6,107 @@
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="localAdviceCommentDAO">
 
+	<select id="getLocalAdviceCommentList" resultType="localadvicecomment" parameterType="Map">
+		  <!-- SELECT R_NUM, LC_IDX, M_ID, LC_DATE, LC_CONTENT, LC_COMMENTCOUNT 
+  	  		FROM (SELECT ROWNUM R_NUM, B.*FROM (SELECT *FROM L_COMMENT ORDER BY LC_IDX DESC) B) 
+   			 WHERE R_NUM BETWEEN 1 AND 10  -->
+   			 <!-- SELECT * FROM L_COMMENT WHERE L_IDX=#{l_idx}  -->
+   			 
+   			 
+  			 SELECT LC.*, PI.P_ROUTE FROM L_COMMENT LC, PROFILE_IMAGE PI  
+	         WHERE LC.M_ID = PI.M_ID 
+	         AND PI.P_MAIN = 1  
+	         AND LC.L_IDX=#{l_idx} ORDER BY LC_IDX ASC 
+	         
+	         <!-- SELECT B2.* FROM (
+			    SELECT ROWNUM R_NUM, B.*
+			    FROM (SELECT LC.*, PI.P_ROUTE 
+			            FROM L_COMMENT LC, (SELECT PI2.* FROM PROFILE_IMAGE PI2 WHERE PI2.P_MAIN = 1) PI  
+			            WHERE LC.M_ID = PI.M_ID  
+			            AND LC.L_IDX = #{l_idx} 
+			            ORDER BY LC.LC_DATE ASC) B 
+			            ) B2 
+			WHERE (B2.R_NUM BETWEEN #{begin} AND #{end}) -->
+	         
+	         
+	</select>
+	
+
+	<insert id="insertLocalAdviceComment" parameterType="localadvicecomment">
+		INSERT INTO L_COMMENT (LC_IDX, L_IDX, M_ID, LC_DATE, LC_CONTENT, LC_COMMENTCOUNT)
+			VALUES (L_COMMENT_SEQ.NEXTVAL, #{l_idx}, #{m_id}, SYSDATE, #{lc_content}, 100)
+	</insert>
+	
+	
+	<update id="updateLocalAdviceComment" parameterType="localadvicecomment">
+		UPDATE L_COMMENT SET LC_CONTENT=#{lc_content} WHERE LC_IDX=#{lc_idx} 
+	</update>
+	
+	<select id="updateLocalAdviceCommentJson" parameterType="localadvicecomment" resultType="Integer">
+		SELECT COUNT(*) FROM L_COMMENT WHERE LC_IDX=#{lc_idx}
+	</select>
+	
+	<delete id="deleteLocalAdviceComment" parameterType="localadvicecomment">
+		DELETE FROM L_COMMENT WHERE LC_IDX= #{lc_idx}
+	</delete>
+	
+	<delete id="deleteLocalAdviceCommentAll" parameterType="localadvice">
+		DELETE FROM L_COMMENT WHERE L_IDX=#{l_idx}
+	</delete>
+	
+	<select id="countLocalAdviceComment" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM L_COMMENT WHERE L_IDX=#{l_idx}  
+	</select>
+	
+	<insert id="insertdetdetComment" parameterType="localadvicecomment">
+		INSERT INTO L_COMMENT (LC_IDX, L_IDX, M_ID, LC_DATE, LC_CONTENT, LC_COMMENTCOUNT, DETDET) 
+    		VALUES (L_COMMENT_SEQ.NEXTVAL, #{l_idx}, #{m_id}, SYSDATE, #{lc_content}, 100, #{lc_idx})
+	</insert>
+	
+	<select id="selectdetdetComment" parameterType="localadvicecomment" resultType="localadvicecomment">
+		SELECT * FROM L_COMMENT WHERE DETDET=(SELECT LC_IDX FROM L_COMMENT WHERE LC_IDX=#{lc_idx})
+	</select>
+	
+	<select id="selectImage" parameterType="profileImg" resultType="String">
+		SELECT P_ROUTE FROM PROFILE_IMAGE WHERE M_ID=#{m_id} AND P_MAIN=1
+	</select>
+	
+	<select id="selectdetdet" parameterType="String" resultType="int">
+		SELECT DISTINCT DETDET FROM L_COMMENT WHERE LC_CONTENT=#{lc_content}
+	</select>
+	
+	<select id="detdetlc_idx" resultType="int">
+		SELECT L_COMMENT_SEQ.CURRVAL FROM DUAL
+	</select>
+	
+	<select id="selectdetdetList" resultType="localadvicecomment" parameterType="String">
+		SELECT L.*, P.* FROM L_COMMENT L, PROFILE_IMAGE P WHERE L.M_ID=P.M_ID AND L.LC_IDX=#{lc_idx} AND P.P_MAIN=1
+	</select>
+	
+	<update id="updatedetdet" parameterType="localadvicecomment">
+		UPDATE L_COMMENT SET LC_CONTENT=#{lc_content} WHERE LC_IDX=#{lc_idx}
+	</update>
+	
+	<delete id="deletedetdet" parameterType="localadvicecomment">
+		DELETE L_COMMENT WHERE LC_IDX=#{lc_idx}
+	</delete>
+	
+	<delete id="deletedetdetall" parameterType="String">
+		DELETE L_COMMENT WHERE DETDET=#{detdet}
+	</delete>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

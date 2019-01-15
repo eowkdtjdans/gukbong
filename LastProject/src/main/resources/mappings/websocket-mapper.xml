@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="webSocketDAO">
+
+<insert id="insertWebSocketChatting" parameterType="websocketChat">
+	INSERT INTO CHAT (C_SENDER, C_CONTEXT, C_RECEIVER, C_INSERTDATE)
+	VALUES (#{c_sender}, #{c_context}, #{c_receiver}, sysdate)
+	
+</insert>
+
+</mapper>

@@ -5,16 +5,82 @@
 <html lang="en">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<title>회원가입</title>
+<title>로그인</title>
 
 <script>
-	//로그인 값이 있던 없던 그냥 넘어가니까 JSON을 사용해서 데이터베이스에 있는지 체크하기.
+
+
+
 	function login(frm) {
-		frm.action = "../../loginMember.do"; //로그인 작업 처리
-		frm.submit();
+	var str = $("#form").serialize();
+		$.ajax({
+			async: true,
+			type : "POST",
+			dataType : "json",
+			data : str,
+			url : '../../loginMemberJson.do',
+			success : function(data) {
+				
+				$.get("http://ipinfo.io", function(response){
+					localStorage.ll_ip = response.ip;
+					localStorage.ll_country = response.country;
+					localStorage.ll_device = navigator.userAgent;
+					localStorage.ll_result = "로그인 테스트";
+				}, "jsonp");
+				
+				var ll_id = frm.m_id.value;
+				var ll_ip = localStorage.ll_ip;
+				var ll_country = localStorage.ll_country;
+				var ll_device = localStorage.ll_device;
+				
+				if (data.cnt > 0) {
+					$.ajax({
+						type : "GET",
+						url : "../logLogin.do?ll_id="+ll_id+"&ll_ip="+ll_ip+"&ll_country="+ll_country+"&ll_device="+ll_device+"&ll_result=로그인성공",
+						success : function(){
+							frm.action = "../../loginMember.do";
+							frm.submit();
+						}
+					});
+				} 
+				else {
+					$.ajax({
+						type : "GET",
+						url : "../logLogin.do?ll_id="+ll_id+"&ll_ip="+ll_ip+"&ll_country="+ll_country+"&ll_device="+ll_device+"&ll_result=로그인실패",
+						success : function(){
+							alert("아이디 또는 비밀번호가 일치하지않습니다. 다시 입력해주세요.");
+							
+							frm.m_id.value = "";
+							frm.m_pwd.value = "";
+							frm.m_id.focus();
+						}
+					});
+				}
+				
+			}
+		});
 
 	};
-		
+	
+	function getIpCountry(ll_result, ll_id) {
+		$.get("http://ipinfo.io", function(response){
+			var ll_ip = response.ip;
+			var ll_country = response.country;
+			var ll_device = navigator.userAgent;
+			
+			location.href = "../logLogin.do?ll_id="+ll_id+"&ll_ip="+ll_ip+"&ll_country="+ll_country+"&ll_device="+ll_device+"&ll_result="+ll_result;
+			
+		}, "jsonp");
+	}
+	
+	
+	function enterkey(event) {
+		if(event.keyCode == 13) {
+			$("#loginBtn").click();
+		}
+	}
+
+	
 </script>
 
 	<meta charset="utf-8">
@@ -35,26 +101,29 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title" style="text-align : center;">로그인</h4>
-							<form method="POST" class="my-login-validation">
+							<form onsubmit="return false"method="POST" class="my-login-validation" id="form"  >
 								<div class="form-group">
 									<label for="email">아이디</label>
-									<input id="m_id" type="email" class="form-control" name="m_id" required autofocus>
+									<input type="email" class="form-control" name="m_id" onkeypress="enterkey()" required autofocus>
 								</div>
-
+								
 								<div class="form-group">
-									<label for="password">비밀번호
-										<a href="../../findPwdMember.do" class="float-right">
-											비밀번호 찾기
-										</a>
-									</label>
-									<input id="m_pwd" type="password" class="form-control" name="m_pwd" required data-eye>
+									<label for="password">비밀번호</label>
+									<input type="password" class="form-control" name="m_pwd" onkeypress="enterkey()" required data-eye>
 								</div>
-
+								
+								
 								<div class="form-group m-0">
-									<button type="button" class="btn btn-primary btn-block" onclick="login(this.form)">
+									 <button type="submit" id="loginBtn" class="btn btn-primary btn-block" onclick="login(this.form)" >
 										Login
-									</button>
+									</button> 
 								</div>
+								
+					
+								<a href="../../findPwdMember.do" class="float-right">
+									비밀번호 찾기
+								</a>
+								
 								<div class="mt-4 text-center">
 									아이디가 없으십니까? <a href="../../insertMember.do">회원가입</a>
 								</div>

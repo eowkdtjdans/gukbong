@@ -5,9 +5,46 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="trevelerDAO">
-	<select id="getTravelersList" parameterType="String" resultType="travelers">
-		SELECT * FROM TRAVELERS
-		WHERE UPPER(T_COUNTRY) LIKE '%' || UPPER(#{key}) || '%'
-		ORDER BY M_ID
+	<select id="getTravelersList" parameterType="Map" resultType="travelers">
+		<!-- SELECT R_NUM, T3.*
+	    FROM (SELECT ROWNUM R_NUM, T2.* FROM (SELECT T.*, PI.P_ROUTE, M.M_ADDRESS, M.M_NAME FROM TRAVELERS T, PROFILE_IMAGE PI, MEMBER M WHERE T.M_ID = PI.M_ID AND PI.M_ID = M.M_ID AND PI.P_MAIN = 1 ORDER BY T_STARTDATE ASC) T2) T3          
+	    WHERE T3.T_COUNTRY LIKE '%' || UPPER(#{key}) || '%' 
+	    AND (R_NUM BETWEEN #{begin} AND #{end}) --> 	
+	    SELECT R_NUM, T3.*, P.*
+	    FROM (SELECT ROWNUM R_NUM, T2.* FROM (SELECT T.*, PI.P_ROUTE, M.M_ADDRESS, M.M_NAME FROM TRAVELERS T, PROFILE_IMAGE PI, MEMBER M WHERE T.M_ID = PI.M_ID AND PI.M_ID = M.M_ID AND PI.P_MAIN = 1 ORDER BY T_STARTDATE ASC) T2) T3 , PROFILE P          
+	    WHERE T3.M_ID=P.M_ID AND T3.T_COUNTRY LIKE '%' || UPPER(#{key}) || '%' 
+	    AND (R_NUM BETWEEN #{begin} AND #{end})	
+	</select>
+	
+	<select id="countTravelers" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM TRAVELERS WHERE UPPER(T_COUNTRY) LIKE '%' || UPPER(#{key}) || '%'
+	</select>
+	
+	<select id="getTravelers" parameterType="String" resultType="travelers">
+		SELECT T.*, P.*, PI.* FROM TRAVELERS T, PROFILE P, PROFILE_IMAGE PI WHERE T.M_ID=P.M_ID AND T.M_ID=PI.M_ID AND PI.P_MAIN=1 AND T.M_ID=#{m_id}
+	</select>
+	
+	<insert id="insertTravelers" parameterType="travelers">
+		INSERT INTO TRAVELERS 
+		(M_ID, T_VISITS, T_MOTIVE, T_COUNTRY, T_STARTDATE, T_ENDDATE)
+		VALUES (#{m_id}, #{t_visits}, #{t_motive}, #{t_country}, #{t_startdate}, #{t_enddate})    
+	</insert>
+	
+	<update id="updateTravelers" parameterType="travelers">
+		UPDATE TRAVELERS SET T_VISITS = #{t_visits},
+						T_MOTIVE = #{t_motive},
+						T_COUNTRY = #{t_country},
+						T_STARTDATE = #{t_startdate},
+						T_ENDDATE = #{t_enddate}
+					WHERE M_ID = #{m_id}
+	</update>
+	
+	<delete id="deleteTravelers">
+		DELETE FROM TRAVELERS WHERE M_ID = #{m_id}
+	</delete>
+	
+	<select id="checkTravelersJson" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM TRAVELERS
+		WHERE M_ID = #{m_id}
 	</select>
 </mapper>

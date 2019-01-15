@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="messageDAO">
+
+	<insert id="insertMessage" parameterType="message">
+		INSERT INTO MESSAGE (MESSAGE_IDX, MESSAGE_SENDER, MESSAGE_RECEIVER, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_REGDATE, MESSAGE_READ)
+		VALUES (MESSAGE_SEND_SEQ.NEXTVAL, #{message_sender}, #{message_receiver}, #{message_title}, #{message_content}, SYSDATE, 0)
+	</insert>
+	
+	<select id="getSendMessageList" resultType="messageSend">
+		<!-- SELECT * FROM MESSAGE_SEND WHERE SEND_SENDER = #{send_sender}
+		ORDER BY SEND_IDX DESC  -->
+			SELECT SEND.*, PI.P_ROUTE
+        FROM MESSAGE_SEND SEND, PROFILE_IMAGE PI
+        WHERE SEND.SEND_RECEIVER = PI.M_ID
+        AND SEND.SEND_SENDER = #{send_sender}
+        AND PI.P_MAIN = 1 
+	</select>
+	
+	<select id="getReceiveMessageList" resultType="messageReceive" parameterType="messageReceive">
+		<!-- SELECT
+		 * FROM 
+		MESSAGE_RECEIVE 
+		WHERE RECEIVE_RECEIVER = #{receive_receiver} 
+		ORDER BY RECEIVE_IDX DESC -->
+	    SELECT RECEIVE.*, PI.P_ROUTE
+        FROM MESSAGE_RECEIVE RECEIVE, PROFILE_IMAGE PI
+        WHERE RECEIVE.RECEIVE_SENDER = PI.M_ID
+        AND RECEIVE.RECEIVE_RECEIVER = #{receive_receiver} 
+        AND PI.P_MAIN = 1
+        ORDER BY RECEIVE_IDX DESC
+	</select>
+	<select id="getAdminReceiveMessageList" resultType="messageReceive" parameterType="messageReceive">
+		 SELECT * FROM MESSAGE_RECEIVE WHERE RECEIVE_RECEIVER = #{receive_receiver} ORDER BY RECEIVE_IDX DESC
+	</select>
+	
+	<select id="MessageReceiveVO" resultType="messageReceive">
+		SELECT COUNT(*) FROM MESSAGE_RECEIVE WHERE RECEIVE_RECEIVER = #{receive_receiver} AND RECEIVE_READ = 0
+	</select>
+	
+	<select id="getSendMessage" parameterType="Integer" resultType="messageSend">
+		SELECT * FROM MESSAGE_SEND WHERE SEND_IDX = #{send_idx} 
+	</select>
+	
+	<select id="getReceiveMessage" parameterType="Integer" resultType="messageReceive">
+		SELECT * FROM MESSAGE_RECEIVE WHERE RECEIVE_IDX = #{receive_idx} 
+	</select>
+	
+	<update id="readSendMessage" parameterType="messageSend">
+		UPDATE MESSAGE_SEND SET SEND_READ = 1 WHERE SEND_IDX = #{send_idx}
+	</update>
+	
+	<update id="readReceiveMessage" parameterType="messageReceive">
+		UPDATE MESSAGE_RECEIVE SET RECEIVE_READ = 1 WHERE RECEIVE_IDX = #{receive_idx}
+	</update>
+	
+	<delete id="deleteSendMessage" parameterType="messageSend">
+		DELETE FROM MESSAGE_SEND WHERE SEND_IDX = #{send_idx}
+	</delete>
+	
+	<delete id="deleteReceiveMessage" parameterType="messageReceive">
+		DELETE FROM MESSAGE_RECEIVE WHERE RECEIVE_IDX = #{receive_idx}
+	</delete>
+	
+	<select id="noticeMessageJson" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM MESSAGE_RECEIVE WHERE RECEIVE_READ = 0 AND RECEIVE_RECEIVER = #{receive_receiver}
+	</select>
+	
+	
+</mapper>

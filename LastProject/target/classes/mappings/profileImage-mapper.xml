@@ -5,5 +5,40 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="profileImageDAO">
-
+	<select id="ProfileImageMainCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM PROFILE_IMAGE WHERE M_ID = #{m_id} AND P_MAIN != 0
+	</select>
+	
+	<insert id="ProfileImageInsert" parameterType="Map">
+		INSERT INTO PROFILE_IMAGE (M_ID, P_ROUTE, P_MAIN)
+		VALUES (#{m_id}, #{p_route}, #{p_main})
+	</insert>
+	
+	<select id="HostImageMainCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM HOST_IMAGE WHERE M_ID = #{m_id} AND H_MAIN != 0
+	</select>
+	
+	<insert id="HostImageInsert" parameterType="Map">
+		INSERT INTO HOST_IMAGE (M_ID, H_ROUTE, H_MAIN)
+		VALUES (#{m_id}, #{h_route}, #{h_main})
+	</insert>
+	
+	<select id="getProfileImageList" parameterType="String" resultType="profileImg">
+			SELECT P_ROUTE, M_ID, P_MAIN FROM PROFILE_IMAGE WHERE M_ID = #{m_id} ORDER BY P_MAIN DESC
+	</select>
+	
+	
+		
+	<delete id="deleteProfileImage" parameterType="profileImg">
+		   DELETE PROFILE_IMAGE WHERE P_ROUTE = #{p_route} AND M_ID = #{m_id}
+	</delete>
+	
+	<update id="updateMainProfileImage" parameterType="profileImg">
+		 UPDATE PROFILE_IMAGE SET P_MAIN = 1 WHERE P_ROUTE = #{p_route} AND M_ID = #{m_id}
+	</update>
+	
+	<update id="mainProfileImageInit" parameterType="profileImg">
+		 UPDATE PROFILE_IMAGE SET P_MAIN = 0 WHERE M_ID = #{m_id}
+	</update> 
+	
 </mapper>

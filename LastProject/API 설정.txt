@@ -1,0 +1,5 @@
+API 설정
+
+-applicationContext에서 Google, FaceBook의 Client_ID, Secret 설정
+-Kakao.jsp에서 kakao키
+-NaverLoginBO.java에서 상수부분에 Client_ID, Secret설정

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="adminDAO">
+
+	<insert id="logVisit" parameterType="Map">
+		INSERT INTO LOG_VISIT(LV_IP, LV_COUNTRY, LV_DATE, LV_BROWSER)
+		VALUES (#{lv_ip}, #{lv_country}, SYSDATE, #{lv_browser})
+	</insert>
+	
+	<insert id="logLogin" parameterType="Map">
+		INSERT INTO LOG_LOGIN(LL_ID, LL_IP, LL_COUNTRY, LL_DATE, LL_DEVICE, LL_RESULT)
+		VALUES (#{ll_id}, #{ll_ip}, #{ll_country}, SYSDATE, #{ll_device}, #{ll_result})
+	</insert>
+	
+	<select id="userAdminList" resultType="member">
+		SELECT * FROM MEMBER
+	</select>
+	
+	<select id="userAdminView" resultType="com.spring.biz.admin.UserAdminViewVO">
+		SELECT M.M_ID, M.M_NAME, M.M_PHONE, M.M_GENDER, M.M_BIRTHDAY, M.M_REGDATE, M.M_ADDRESS,
+        P.P_HOBBY, P.P_LANGUAGE, P.P_JOB, P.P_ABOUTME, P.P_PURPOSE,P.P_VISITCOUNTRY, PI.P_ROUTE
+		FROM MEMBER M, PROFILE_IMAGE PI, PROFILE P
+		WHERE M.M_ID = PI.M_ID
+        AND PI.M_ID = P.M_ID
+		AND PI.P_MAIN = '1'
+		AND M.M_ID = #{m_id}
+	</select>
+	
+	<select id="userAdminPostList" resultType="com.spring.biz.admin.UserAdminPostVO">
+		SELECT L.*, PI.P_ROUTE
+		FROM LOCALADVICE L, PROFILE_IMAGE PI
+		WHERE L.M_ID = PI.M_ID
+		AND L.M_ID = #{m_id}
+		AND PI.P_MAIN = 1
+		ORDER BY L.L_DATE DESC
+	</select>
+	
+	<select id="userAdminCommentList" resultType="com.spring.biz.admin.UserAdminCommentVO">
+		SELECT LC.LC_IDX, LC.L_IDX, LC.M_ID, LC.LC_DATE, LC.LC_CONTENT, LC.DETDET, PI.P_ROUTE
+		FROM L_COMMENT LC, PROFILE_IMAGE PI
+		WHERE LC.M_ID = PI.M_ID
+		AND PI.P_MAIN = 1
+		AND LC.M_ID = #{m_id}
+	</select>
+	
+	<select id="adminCnt" resultType="com.spring.biz.admin.AdminCntVO">
+		SELECT *
+		FROM (SELECT COUNT(*) AS M_CNT FROM MEMBER) M,
+		     (SELECT COUNT(*) AS L_CNT FROM LOCALADVICE) L,
+		     (SELECT COUNT(*) AS LC_CNT FROM L_COMMENT) LC,
+		     (SELECT COUNT(*) AS RH_CNT FROM HOST WHERE H_ENDDATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')) RH,
+		     (SELECT COUNT(*) AS H_CNT FROM HOST) H,
+		     (SELECT COUNT(*) AS RT_CNT FROM TRAVELERS WHERE T_ENDDATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')) RT,
+		     (SELECT COUNT(*) AS T_CNT FROM TRAVELERS) T,
+		     (SELECT COUNT(*) AS MSG_CNT FROM MESSAGE) MSG,
+		     (SELECT COUNT(*) AS E_CNT FROM EVENT) E,
+		     (SELECT COUNT(*) AS EC_CNT FROM EVENT_COMMENT) EC,
+		     (SELECT COUNT(*) AS LOG_L_CNT FROM LOG_LOGIN) L_LC,
+		     (SELECT COUNT(*) AS LOG_V_CNT FROM LOG_VISIT) L_VC
+	</select>
+	
+	<select id="eventAdminList" resultType="event">
+		SELECT E_IDX, E_ADDRESS, E_NAME, E_CONTENT, E_STARTDATE, E_ENDDATE, E_UPVOTE, E_REVIEWCOUNT, LAT, LNG, E_REGION, E_TAG, E_COUNT 
+    		FROM EVENT
+        	WHERE E_ENDDATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	
+	<insert id="insertEvent" parameterType="event">
+		INSERT INTO EVENT (E_IDX, E_NAME, E_CONTENT, E_ADDRESS, E_STARTDATE, E_ENDDATE, LAT, LNG, E_REGION, E_TAG, E_DATE)
+		VALUES (EVENT_SEQ.NEXTVAL, #{e_name}, #{e_content}, #{e_address}, #{e_startdate}, #{e_enddate}, #{lat}, #{lng}, #{e_region}, #{e_tag}, SYSDATE)
+	</insert>
+	
+	<insert id="insertEventImg" parameterType="Map">
+		INSERT INTO EVENT_IMAGE (E_IDX, E_IMG, E_MAIN)
+		VALUES (EVENT_SEQ.CURRVAL, #{e_img}, #{e_main})
+	</insert>
+
+
+</mapper>

@@ -30,6 +30,9 @@
 
   <!-- Main Stylesheet File -->
   <link href="views/css/style.css" rel="stylesheet">
+  
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&callback=initAutocomplete&key=AIzaSyAfB2qQnvAuU2YFFqi8hrPWfjJNyxl5kWc" async defer></script>
 
   <!-- =======================================================
     Theme Name: BizPage
@@ -45,8 +48,57 @@
 	a{
 		color:#5e7e9b;
 	}
+	.paging { list-style: none; }
+	.paging li {
+		float: left;
+		margin-right: 30px;
+	}
+	.paging li a {
+		text-decoration: none;
+		 display: block;
+		padding: 3px 3px; 
+		color: black;
+	}
+
+	.paging .disable {
+		padding: 3px 3px;
+		color: silver;
+	}
+	.paging .now {
+		padding: 3px 3px;
+		font-weight: bold;
+	} 
+	#detcnt{
+		color: orange;
+	}
+	#profileImage{
+		width: 50px;
+		height: 50px;
+	}
+	#date{
+		font-size: 0.9em;
+		opacity: 0.6;
+	}
+	
 </style>
- 
+
+<script>
+	
+	//주소를 좌표로 변환
+	var placeSearch, autocomplete;
+
+	function initAutocomplete() {
+	  autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')),{types: ['geocode']});
+	  autocomplete.addListener('place_changed', fillInAddress);
+	}
+
+	function fillInAddress() { //lat 와 lng 값을 넘겨줄 input 태그에 값 넣어주기
+	  var place = autocomplete.getPlace();
+	    document.getElementById("lat").value=place.geometry.location.lat();
+	    document.getElementById("lng").value=place.geometry.location.lng();
+	}
+	
+</script> 
  
 </head>
 
@@ -98,7 +150,11 @@
 					<option value="find_event">이벤트검색
 					<option value="find_advice">현지정보검색
 				</select>
-				<input type="text" name="searchKeyword">
+				<input id="autocomplete" placeholder="Enter your address" type="text" name="searchKeyword">
+				
+				<input class="field" id="lat" type="hidden" name="lat"/>
+				<input class="field" id="lng" type="hidden" name="lng"/>
+				
 				<input type="submit" value="검색">
 			</td>
 		</tr>
@@ -115,24 +171,85 @@
       	<h5>요청하신 키워드에 관한 게시글 수 : ${countLocalAdvice }</h5>
       	<div class="text-right"><a href="../writeLocalAdvice.do" class="btn btn-outline-secondary">게시글 작성</a></div>
       	<br>
+      	<form method="post" name="frm">
       	<table class="table">
       	<c:choose>
 	      	<c:when test="${empty localAdviceList}">
 	      			<tr>
 	      				<td>요청하신 도시의 정보가 존재하지 않습니다.</td>
 	      			</tr>
-	      	</c:when>
+	      	</c:when>                    
 	      	<c:otherwise>
       		<c:forEach var="list" items="${localAdviceList}">
 	      		<tr>
-	      			<th><a href=#>${list.l_subject }<br>${list.m_id }</a></th>
-	      			<td>${list.l_upvote } &nbsp;&nbsp; ${list.l_reviewcount }</td>
+	      			<td style="width: 7%"><img src="${list.p_route }"
+                        class="rounded-circle" id="profileImage"
+                        onerror='this.src="../views/img/people/fuckyou.jpg"'></td>
+	      			<th style="width: 63%">
+	      				<a href="../getLocalAdvice.do?l_idx=${list.l_idx }&m_id=${list.m_id}&cPage=1">${list.l_subject }</a>&nbsp;&nbsp;<span id="detcnt">[${list.lc_cnt}]</span> &emsp;<span id="date">${list.l_date }</span>
+	      				<br>${list.m_id }
+	      			</th>
+	      			<td style="width:15%"> &nbsp;&nbsp;&nbsp;&nbsp; <a id="good" href="#" ><img src="views/img/good.png" style="width: 20px; height: 20px;">  좋아요 ${list.l_upvote }</a> &nbsp;&nbsp;&nbsp;&nbsp; </td>
+	      			<td style="width:15%"><img src="views/img/lookup.PNG" style="width: 20px; height: 20px;"> ${list.l_reviewcount }</td>
 	      		</tr>
       		</c:forEach>
-      		</c:otherwise>
-      		
+      		</c:otherwise>     		
       	</c:choose>	
+      	<!-- ---------------------------------------------------------------- -->
+      	
+      	<tr>
+			<td colspan="4">
+				<ol class="paging">
+				
+				<%--[이전으로]에 대한 사용여부 처리 --%>
+				<c:choose>
+				<%-- 사용불가(disable) : 첫번째 블록인 경우 --%>
+					<c:when test="${pvo.beginPage == 1 }">
+						<li class="disable">◀</li>
+					</c:when>
+				<%--사용가능(enable) : 두번째 이상(첫번째 아닌경우) --%>
+					<c:otherwise>
+						<li>
+							<a href="../getLocalAdviceList2.do?cPage=${pvo.beginPage - 1 }">◀</a>
+						</li>
+					</c:otherwise>	
+				</c:choose>
+				
+				<%-- 블록내에 표시할 페이지 반복처리(시작페이지~끝페이지)--%>
+				<c:forEach var="k" 
+						begin="${pvo.beginPage }" end="${pvo.endPage }">
+				<c:choose>
+					<c:when test="${k == pvo.nowPage }">
+						<li class="now">${k }</li>
+					</c:when>
+					<c:otherwise>
+						<li>
+							<a href="../getLocalAdviceList2.do?cPage=${k }">${k }</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				</c:forEach>
+				
+				<%--[다음으로]에 대한 사용여부 처리 --%>
+				<c:choose>	
+					<%--사용불가(disable) : endPage가 전체페이지수 보다 크거나 같으면 --%>
+					<c:when test="${pvo.endPage >= pvo.totalPage }">
+						<li class="disable">▶</li>
+					</c:when>
+					<%--사용가능(enable) --%>
+					<c:otherwise>
+						<li>
+							<a href="../getLocalAdviceList2.do?cPage=${pvo.endPage + 1 }">▶</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				</ol>
+			</td>
+		</tr>
+      	
+      	<!-- ---------------------------------------------------------------- -->
       	</table>
+      	</form>
       	
       </div>
     </section><!-- #about -->

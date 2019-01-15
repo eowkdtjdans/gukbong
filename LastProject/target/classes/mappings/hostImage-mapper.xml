@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="hostImageDAO">
+<select id="getHostImage" resultType="hostImg">
+		SELECT * FROM HOST_IMAGE WHERE M_ID = #{m_id} AND H_MAIN = 1
+	</select>
+	
+	<select id="getHostImageList" parameterType="String" resultType="hostImg">
+		SELECT H_ROUTE, M_ID, H_MAIN FROM HOST_IMAGE WHERE M_ID = #{m_id} ORDER BY H_MAIN DESC
+	</select>
+	
+	<delete id="deleteHostImage" parameterType="hostImg">
+		DELETE HOST_IMAGE WHERE H_ROUTE = #{h_route} AND M_ID = #{m_id}
+	</delete>
+	
+	<update id="updateMainHostImage">
+		UPDATE HOST_IMAGE SET H_MAIN = 1 WHERE H_ROUTE = #{h_route} AND M_ID = #{m_id}
+		
+	</update>
+	
+	<update id="mainHostImageInit">
+		UPDATE HOST_IMAGE SET H_MAIN = 0 WHERE M_ID = #{m_id}
+	</update>
+</mapper>

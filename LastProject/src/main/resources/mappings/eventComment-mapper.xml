@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="eventCommentDAO">
+	<select id="getEventCommentList" parameterType="int" resultType="eventcomment">
+		SELECT EC.*, PI.* 
+    FROM (SELECT * FROM EVENT_COMMENT WHERE E_IDX=#{e_idx})EC  
+          ,(SELECT * FROM PROFILE_IMAGE WHERE P_MAIN=1)PI  
+    WHERE EC.M_ID=PI.M_ID ORDER BY EC.EC_IDX ASC
+	</select>
+	
+	<update id="updateEventComment" parameterType="eventcomment">
+		UPDATE EVENT_COMMENT SET EC_CONTENT = #{ec_content} WHERE EC_IDX=#{ec_idx} 
+	</update>
+	
+	<delete id="deleteEventComment" parameterType="int">
+		DELETE FROM EVENT_COMMENT WHERE EC_IDX=#{ec_idx}
+	</delete>
+	
+	<insert id="insertEventComment" parameterType="eventcomment">
+		INSERT INTO EVENT_COMMENT(EC_IDX, E_IDX, M_ID, EC_CONTENT, EC_DATE, EC_UPVOTE) 
+    		VALUES(EVENT_COMMENT_SEQ.NEXTVAL, #{e_idx}, #{m_id}, #{ec_content}, SYSDATE, 0)
+	</insert>
+	
+	<select id="getEventComment" parameterType="eventcomment" resultType="eventcomment">
+		SELECT EC.*, PI.P_ROUTE FROM (SELECT * FROM EVENT_COMMENT WHERE M_ID=#{m_id} AND EC_CONTENT=#{ec_content})EC, (SELECT * FROM PROFILE_IMAGE WHERE P_MAIN=1)PI
+   		 WHERE EC.M_ID=PI.M_ID
+	</select>
+</mapper>
+
+
+
+
+
+

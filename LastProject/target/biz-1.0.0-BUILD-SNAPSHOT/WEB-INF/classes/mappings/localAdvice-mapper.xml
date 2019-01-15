@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="localAdviceDAO">
+	<!-- 키값으로 전체조회 -->
+	<select id="getLocalAdviceList" parameterType="Map" resultType="localadvice">
+		<!-- SELECT * FROM LOCALADVICE 
+		WHERE UPPER(L_SUBJECT) LIKE '%' || UPPER(#{key}) || '%' 
+		ORDER BY L_IDX DESC -->
+		SELECT R_NUM, L_IDX, M_ID, L_SUBJECT, L_CONTENT, L_DATE, L_UPVOTE, L_REVIEWCOUNT, M_ADDRESS
+   		FROM (SELECT ROWNUM R_NUM, B.* FROM (SELECT * FROM LOCALADVICE ORDER BY L_IDX DESC) B)
+    	WHERE UPPER(M_ADDRESS) LIKE '%' || UPPER(#{key}) || '%' AND (R_NUM BETWEEN #{begin} AND #{end})
+	</select>
+	
+	<!-- 키값에 해당하는 게시글수 조회 -->
+	<select id="countLocalAdvice" parameterType="String" resultType="int">
+		SELECT COUNT(L_SUBJECT) FROM LOCALADVICE WHERE UPPER(L_SUBJECT) LIKE '%' || UPPER(#{key}) || '%'
+	</select>
+	
+	<!-- 게시글 입력 -->
+	<insert id="insertLocalAdvice" parameterType="localadvice">
+		INSERT INTO LOCALADVICE(L_IDX, M_ID, L_SUBJECT, L_CONTENT, L_DATE, L_UPVOTE, L_REVIEWCOUNT, M_ADDRESS) 
+		VALUES (LOCALADVICE_SEQ.NEXTVAL, #{m_id}, #{l_subject}, #{l_content}, SYSDATE, 0, 0, #{m_address})
+	</insert>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="getLocalAdvice" parameterType="localadvice" resultType="localadvice">
+		SELECT L.*, PI.P_ROUTE FROM LOCALADVICE L, PROFILE_IMAGE PI
+		WHERE L.L_IDX=#{l_idx} AND PI.M_ID = L.M_ID
+		AND PI.ROWID IN (SELECT MIN(PI2.ROWID) FROM PROFILE_IMAGE PI2 GROUP BY PI2.M_ID)
+	</select> 
+
+	<!-- 프로필이미지 조회  -->
+	<select id="getProfileImage" parameterType="com.spring.biz.profileImage.ProfileImageVO" resultType="com.spring.biz.profileImage.ProfileImageVO">		
+		SELECT M_ID, P_ROUTE 
+		FROM PROFILE_IMAGE 
+		WHERE ROWID IN (SELECT MIN(ROWID) FROM PROFILE_IMAGE GROUP BY M_ID) 
+		AND M_ID = #{m_id}
+	</select>  
+	
+	<!-- 게시글 수정 -->
+	<update id="updateLocalAdvice" parameterType="localadvice">
+		UPDATE LOCALADVICE SET L_SUBJECT=#{l_subject}, L_CONTENT=#{l_content} WHERE L_IDX=#{l_idx} 
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

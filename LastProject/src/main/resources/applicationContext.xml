@@ -48,8 +48,8 @@
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
         <property name="defaultEncoding" value="utf-8"/>
-        <property name="username" value="gukbong2459@gmail.com" />
-        <property name="password" value="a032003!" />
+        <property name="username" value="gukbongworld@gmail.com" />
+        <property name="password" value="bitcamp1!" />
         
         <property name="javaMailProperties">
             <props>
@@ -59,10 +59,41 @@
         </property>
          
     </bean>
-     
     <bean id="email" class="com.spring.biz.member.Email"></bean>
     <bean id="emailSender" class="com.spring.biz.member.EmailSender"/>
-
+    
+    <!-- ========== 구글 로그인 api 관련 ========== -->
+    <!-- Google 소셜 로그인 연결 설정 -->
+	<bean id = "googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="320127136039-j4l8hms8087fdjorf8pnsphbi9rdhn86.apps.googleusercontent.com"/>
+		<constructor-arg value="BNVtt7U9mN3SVy8dGSP5wvyG"/>
+	</bean>
+	 
+	<bean id = "googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me"></property>
+		<property name="redirectUri" value="http://localhost:8080/googleCallback.do"/>
+	</bean>
 	
+	<bean id="naverLoginBO" class="com.spring.biz.loginAPI.NaverLoginBO"></bean>
 	
+	<!-- Facebook 소셜 로그인 연결 설정 -->
+ 
+    <bean id="connectionFactory"
+        class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+        <constructor-arg value="517079855476323" />
+        <constructor-arg value="" /> 
+    </bean>
+ 
+    <bean id="oAuth2Parameters"
+        class="org.springframework.social.oauth2.OAuth2Parameters">
+        <property name="scope" value="email" />
+        <property name="redirectUri" value="http://localhost:8080/facebookSignInCallback.do" />
+    </bean>
+    
+    <!-- =================================================================== -->
+    <!-- MultipartResolver 설정 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="20971520" />
+        <property name="maxInMemorySize" value="1048576" />
+    </bean>
 </beans>

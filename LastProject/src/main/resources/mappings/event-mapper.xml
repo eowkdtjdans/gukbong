@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="eventDAO">
+	
+	<select id="getEventList" resultType="event" parameterType="Map">
+		SELECT R_NUM, E_IDX, E_ADDRESS, E_NAME, E_CONTENT, E_STARTDATE, E_ENDDATE, E_UPVOTE, E_REVIEWCOUNT, LAT, LNG, E_REGION, E_TAG, E_COUNT, E_DATE 
+    		FROM (SELECT ROWNUM R_NUM, E.*FROM (SELECT EVENT.* FROM EVENT)E) 
+        	WHERE UPPER(E_ADDRESS) LIKE '%' || UPPER(#{key}) || '%' 
+        	AND (R_NUM BETWEEN #{begin} AND #{end}) AND E_ENDDATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="countEvent" parameterType="String" resultType="int">
+		SELECT COUNT(E_IDX) FROM EVENT WHERE UPPER(E_ADDRESS) LIKE '%' || UPPER(#{key}) || '%'
+	</select>
+	
+	<select id="getEvent" resultType="event" parameterType="int"> 
+		SELECT * FROM EVENT WHERE E_IDX=#{e_idx}
+	</select>
+	
+	<update id="goodEvent" parameterType="int">
+		UPDATE EVENT SET E_UPVOTE = E_UPVOTE+1 WHERE E_IDX=#{e_idx}
+	</update>
+	
+	<update id="badEvent" parameterType="int">
+		UPDATE EVENT SET E_UPVOTE = E_UPVOTE-1 WHERE E_IDX=#{e_idx}
+	</update>
+	
+	<update id="updet" parameterType="int">
+		UPDATE EVENT SET E_COUNT = E_COUNT+1 WHERE E_IDX=#{e_idx} 
+	</update>
+	
+	<update id="downdet" parameterType="int">
+		UPDATE EVENT SET E_COUNT = E_COUNT-1 WHERE E_IDX=#{e_idx} 
+	</update>
+	
+	<update id="upreviewcount" parameterType="int">
+		UPDATE EVENT SET E_REVIEWCOUNT = E_REVIEWCOUNT+1  WHERE E_IDX = #{e_idx }
+	</update>
+	
+	<select id="EventList" resultType="event">
+		SELECT E.*, EI.* FROM (EVENT)E, (EVENT_IMAGE)EI WHERE E.E_IDX=EI.E_IDX AND E_MAIN=1
+	</select>
+	
+	<select id="selectRegion" parameterType="String" resultType="event">
+		SELECT E.*, EI.* FROM (EVENT)E, (EVENT_IMAGE)EI WHERE E.E_IDX=EI.E_IDX AND E.E_REGION=#{e_region} AND EI.E_MAIN=1
+	</select>
+	
+	
+	
+	<!-- region 5가지 -->
+	<select id="selectRegionAsia" resultType="event">
+		SELECT E.*, EI.* FROM (EVENT)E, (EVENT_IMAGE)EI WHERE E.E_IDX=EI.E_IDX AND E.E_REGION='아시아' AND EI.E_MAIN=1
+	</select>
+	
+	<select id="selectRegionEurope" resultType="event">
+		SELECT E.*, EI.* FROM (EVENT)E, (EVENT_IMAGE)EI WHERE E.E_IDX=EI.E_IDX AND E.E_REGION='유럽' AND EI.E_MAIN=1
+	</select>
+	
+	<select id="selectRegionOceania" resultType="event">
+		SELECT E.*, EI.* FROM (EVENT)E, (EVENT_IMAGE)EI WHERE E.E_IDX=EI.E_IDX AND E.E_REGION='오세아니아' AND EI.E_MAIN=1
+	</select>
+	
+	<select id="selectRegionNorthAmerica" resultType="event">
+		SELECT E.*, EI.* FROM (EVENT)E, (EVENT_IMAGE)EI WHERE E.E_IDX=EI.E_IDX AND E.E_REGION='북아메리카' AND EI.E_MAIN=1
+	</select>
+	
+	<select id="selectRegionSouthAmerica" resultType="event">
+		SELECT E.*, EI.* FROM (EVENT)E, (EVENT_IMAGE)EI WHERE E.E_IDX=EI.E_IDX AND E.E_REGION='남아메리카' AND EI.E_MAIN=1
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

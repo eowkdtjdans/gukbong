@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="localAdviceCommentDAO">
+
+	<select id="getLocalAdviceCommentList" resultType="localadvicecomment" parameterType="int">
+		  <!-- SELECT R_NUM, LC_IDX, M_ID, LC_DATE, LC_CONTENT, LC_COMMENTCOUNT 
+  	  		FROM (SELECT ROWNUM R_NUM, B.*FROM (SELECT *FROM L_COMMENT ORDER BY LC_IDX DESC) B) 
+   			 WHERE R_NUM BETWEEN 1 AND 10  -->
+   			 <!-- SELECT * FROM L_COMMENT WHERE L_IDX=#{l_idx}  -->
+  			 SELECT LC.*, PI.P_ROUTE FROM L_COMMENT LC, PROFILE_IMAGE PI  
+	         WHERE LC.M_ID = PI.M_ID 
+	         AND PI.ROWID IN (SELECT MIN(PI2.ROWID) FROM PROFILE_IMAGE PI2 GROUP BY PI2.M_ID) 
+	         AND LC.L_IDX=#{l_idx} 
+	</select>
+	
+
+	<insert id="insertLocalAdviceComment" parameterType="localadvicecomment">
+		INSERT INTO L_COMMENT (LC_IDX, L_IDX, M_ID, LC_DATE, LC_CONTENT, LC_COMMENTCOUNT)
+			VALUES (L_COMMENT_SEQ.NEXTVAL, #{l_idx}, #{m_id}, SYSDATE, #{lc_content}, 100)
+	</insert>
+	
+	
+	<update id="updateLocalAdviceComment" parameterType="localadvicecomment">
+		UPDATE L_COMMENT SET LC_CONTENT=#{lc_content} WHERE LC_IDX=#{lc_idx} 
+	</update>
+	
+	<select id="updateLocalAdviceCommentJson" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM L_COMMENT WHERE M_ID=#{m_id} AND LC_IDX=#{lc_idx} AND LC_CONTENT=#{lc_content}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
