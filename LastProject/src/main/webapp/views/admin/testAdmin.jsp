@@ -533,7 +533,7 @@
 						<div class="col-lg-3 col-6">
 						<div id="client" class="small-box">
 								<div class="inner">
-									<h3>${adminCnt.m_cnt}</h3>
+									<h3>${adminCnt.adm_cnt}</h3>
 
 									<p>문의 관리</p>
 								</div>

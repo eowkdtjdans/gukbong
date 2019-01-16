@@ -26,6 +26,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <style>	
 	#noSorting::after {
@@ -466,7 +467,7 @@
 											<th>Email</th>
 											<th>제목</th>
 											<th>내용</th>
-											<th>DATE</th>
+											<th id="descSorting">DATE</th>
 											<th id="noSorting">Admin</th>
 										</tr>
 									</thead>
@@ -476,7 +477,8 @@
 											<td><div class="userEmail">${adminMessageList.receive_sender}</div></td>
 											<td><div class="userTitle">${adminMessageList.receive_title}</div></td>
 											<td><div class="userContent">${adminMessageList.receive_content}</div></td>
-											<td><div class="userDate">${adminMessageList.receive_regdate}</div></td>
+											<fmt:formatDate var="receive_regdate" value="${adminMessageList.receive_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+											<td><div class="userDate">${receive_regdate}</div></td>
 											<td><button type="button" class="btn btn-default" onclick="location.href='/adminMessageGet.do?receive_idx=${adminMessageList.receive_idx }'">상세보기</button></td>
 										</tr>
 										</c:forEach>

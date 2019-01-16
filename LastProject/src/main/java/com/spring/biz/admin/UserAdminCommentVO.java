@@ -3,27 +3,21 @@ package com.spring.biz.admin;
 import java.util.Date;
 
 public class UserAdminCommentVO {
-	private int lc_idx, l_idx, detdet;
-	private String m_id, lc_content, p_route;
-	private Date lc_date;
+	private int c_idx, idx;
+	private String m_id, c_content, p_route, c_type;
+	private Date c_date;
 	
-	public int getLc_idx() {
-		return lc_idx;
+	public int getC_idx() {
+		return c_idx;
 	}
-	public void setLc_idx(int lc_idx) {
-		this.lc_idx = lc_idx;
+	public void setC_idx(int c_idx) {
+		this.c_idx = c_idx;
 	}
-	public int getL_idx() {
-		return l_idx;
+	public int getIdx() {
+		return idx;
 	}
-	public void setL_idx(int l_idx) {
-		this.l_idx = l_idx;
-	}
-	public int getDetdet() {
-		return detdet;
-	}
-	public void setDetdet(int detdet) {
-		this.detdet = detdet;
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 	public String getM_id() {
 		return m_id;
@@ -31,11 +25,11 @@ public class UserAdminCommentVO {
 	public void setM_id(String m_id) {
 		this.m_id = m_id;
 	}
-	public String getLc_content() {
-		return lc_content;
+	public String getC_content() {
+		return c_content;
 	}
-	public void setLc_content(String lc_content) {
-		this.lc_content = lc_content;
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
 	}
 	public String getP_route() {
 		return p_route;
@@ -43,16 +37,18 @@ public class UserAdminCommentVO {
 	public void setP_route(String p_route) {
 		this.p_route = p_route;
 	}
-	public Date getLc_date() {
-		return lc_date;
+	public String getC_type() {
+		return c_type;
 	}
-	public void setLc_date(Date lc_date) {
-		this.lc_date = lc_date;
+	public void setC_type(String c_type) {
+		this.c_type = c_type;
+	}
+	public Date getC_date() {
+		return c_date;
+	}
+	public void setC_date(Date c_date) {
+		this.c_date = c_date;
 	}
 	
-	@Override
-	public String toString() {
-		return "UserAdminCommentVO [lc_idx=" + lc_idx + ", l_idx=" + l_idx + ", detdet=" + detdet + ", m_id=" + m_id
-				+ ", lc_content=" + lc_content + ", p_route=" + p_route + ", lc_date=" + lc_date + "]";
-	}
+	
 }

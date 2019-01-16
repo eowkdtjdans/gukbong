@@ -40,11 +40,17 @@
 	</select>
 	
 	<select id="userAdminCommentList" resultType="com.spring.biz.admin.UserAdminCommentVO">
-		SELECT LC.LC_IDX, LC.L_IDX, LC.M_ID, LC.LC_DATE, LC.LC_CONTENT, LC.DETDET, PI.P_ROUTE
+		(SELECT LC.LC_IDX C_IDX, LC.L_IDX IDX, LC.M_ID, LC.LC_DATE C_DATE, LC.LC_CONTENT C_CONTENT, PI.P_ROUTE, 'LC' AS C_TYPE
 		FROM L_COMMENT LC, PROFILE_IMAGE PI
 		WHERE LC.M_ID = PI.M_ID
 		AND PI.P_MAIN = 1
-		AND LC.M_ID = #{m_id}
+		AND LC.M_ID = #{m_id})
+		UNION
+		(SELECT EC.EC_IDX C_IDX, EC.E_IDX IDX, EC.M_ID, EC.EC_DATE C_DATE, EC.EC_CONTENT C_CONTENT, PI.P_ROUTE, 'EC' AS C_TYPE
+		FROM EVENT_COMMENT EC, PROFILE_IMAGE PI
+		WHERE EC.M_ID = PI.M_ID
+		AND PI.P_MAIN = 1
+		AND EC.M_ID = #{m_id})
 	</select>
 	
 	<select id="adminCnt" resultType="com.spring.biz.admin.AdminCntVO">
@@ -60,7 +66,8 @@
 		     (SELECT COUNT(*) AS E_CNT FROM EVENT) E,
 		     (SELECT COUNT(*) AS EC_CNT FROM EVENT_COMMENT) EC,
 		     (SELECT COUNT(*) AS LOG_L_CNT FROM LOG_LOGIN) L_LC,
-		     (SELECT COUNT(*) AS LOG_V_CNT FROM LOG_VISIT) L_VC
+		     (SELECT COUNT(*) AS LOG_V_CNT FROM LOG_VISIT) L_VC,
+             (SELECT COUNT(*) AS ADM_CNT FROM MESSAGE_RECEIVE WHERE RECEIVE_RECEIVER = 'admin') AD
 	</select>
 	
 	<select id="eventAdminList" resultType="event">

@@ -152,38 +152,31 @@
 .post2 {
 	min-height: 50px;
 }
+
+#btnCenter {
+	text-align: center;
+}
 </style>
 
 <script>
-function test(p_route, m_id) {
-   var modal = document.getElementById('myModal');
-   
-   var img = document.getElementById(p_route);
-   var modalImg = document.getElementById("img01");
-   var captionText = document.getElementById("caption");
-   
-   var m_id_value = document.getElementById('m_id');
-   var p_route_value = document.getElementById('p_route');
-   
-   m_id_value.value=m_id;
-   p_route_value.value=p_route;
-   
-   modal.style.display = "block";
-   modalImg.src = img.src;
-   captionText.innerHTML = img.alt;
-   
+	function imgModalOpen(p_route, m_id) {
+	   	var modal = document.getElementById('myModal');
+	   
+	   	var img = document.getElementById(p_route);
+	   	var modalImg = document.getElementById("img01");
+	   	var captionText = document.getElementById("caption");
+	   
+	   	modal.style.display = "block";
+	   	modalImg.src = img.src;
+	   	captionText.innerHTML = img.alt;
+	   
+	   	function close() { 
+		   	alert("않2");
+		   	modal.style.display = "none";
+		}
+	}
+   function deleteImage() {
 
-   function close() { 
-     modal.style.display = "none";
-   }
-}
-   function deleteImage(frm) {
-      var m_id = frm.m_id.value;
-      var p_route = frm.p_route.value;
-      var str = $("#modalBtn").serialize();
-   
-      frm.action = "../../deleteProfileImage.do";
-      frm.submit();
       return false; 
    }
 
@@ -200,6 +193,15 @@ $(function(){
 		$(".card-body").css("max-height", 610);
 	});
 });
+</script>
+<script>
+	function adminExit(m_id) {
+		if(confirm("정말 "+m_id+"님을 탈퇴시키시겠습니까?")){
+			location.href="/DeleteMember.do?m_id="+m_id;
+		} else {
+			return false;
+		}
+	}
 </script>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -614,6 +616,9 @@ $(function(){
                               <li class="list-group-item"><b>가입일자</b> <a
                                  class="float-right">${reg}</a></li>
                            </ul>
+                           <div id="btnCenter">
+                              <button type="button" class="btn btn-outline-secondary" onclick="adminExit('${userAdminViewVO.m_id}')">회원탈퇴</button>
+						   </div>
 
                         </div>
                         <!-- /.card-body -->
@@ -709,11 +714,16 @@ $(function(){
                                     <div class="user-block">
                                        <img class="img-circle img-bordered-sm" src="${list.p_route}" alt="user image" onerror='this.src="/views/img/people/fuckyou.jpg"'>
                                        <span class="username">
-                                          <a href="/getLocalAdvice.do?l_idx=${list.l_idx }&m_id=${list.m_id}" class="subject">${list.lc_content}</a>
+                                       <c:if test="${list.c_type eq 'LC'}">
+                                          <a href="/getLocalAdvice.do?l_idx=${list.idx}&m_id=${list.m_id}" class="subject">${list.c_content}</a>
+                                       </c:if>
+                                       <c:if test="${list.c_type eq 'EC'}">
+                                          <a href="/getEvent.do?e_idx=${list.idx}&m_id=${list.m_id}" class="subject">${list.c_content}</a>
+                                       </c:if>
                                        </span>
-                                       <fmt:formatDate var="lc_date" value="${list.lc_date}" pattern="yyyy-MM-dd a hh:mm:ss"/>
+                                       <fmt:formatDate var="c_date" value="${list.c_date}" pattern="yyyy-MM-dd a hh:mm:ss"/>
                                        <span class="description">
-                                          ${lc_date}
+                                          ${c_date}
                                        </span>
                                     </div>
 
@@ -728,7 +738,7 @@ $(function(){
                                  <div class="post2">
                                     <div class="user-block">
                                     <c:forEach var="list" items="${userAdminImageSelect}">
-									    <span style="width:250px; height:300px;" onclick="test('${list.p_route}', '${list.m_id}')">
+									    <span style="width:250px; height:300px;" onclick="imgModalOpen('${list.p_route}', '${list.m_id}')">
 									       <img id="${list.p_route}" class="myImg" src="${list.p_route}" style="width:250px; height:250px;" onerror='this.src="/views/img/people/fuckyou.jpg"'>
 									      </span>
 									</c:forEach>
@@ -774,18 +784,14 @@ $(function(){
    <!-- ./wrapper -->
    
    	<!-- The Modal -->
-	<form method="post" id="modalBtn">
 	<div id="myModal" class="modal">
 	  <div style="text-align : right;">
-        <button onclick="deleteImage(this.form)" class="btn btn-default">이미지 삭제</button>
+        <button onclick="deleteImage()" class="btn btn-default">이미지 삭제</button>
         <button onclick="close()" class="btn btn-default">닫기</button>
-        <input id="m_id" type="hidden" class="form-control" name="m_id">
-        <input id="p_route" type="hidden" class="form-control" name="p_route">
 	  </div>
 	  <img class="modal-content" id="img01">
 	  <div id="caption"></div>
 	</div>
-	</form>
    
    <!-- jQuery -->
    <script src="../../plugins/jquery/jquery.min.js"></script>

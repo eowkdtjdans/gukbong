@@ -32,10 +32,11 @@ import com.spring.biz.member.MemberVO;
 import com.spring.biz.message.MessageRecieveVO;
 import com.spring.biz.message.MessageService;
 import com.spring.biz.profileImage.FileUploadService;
+import com.spring.biz.profileImage.ProfileImageService;
 import com.spring.biz.profileImage.ProfileImageVO;
 
 @Controller
-@SessionAttributes({"userAdminList", "userAdminViewVO", "userAdminPostList", "userAdminCommentList", "userAdminImageSelect", "eventAdminList", "adminCnt"})
+@SessionAttributes({"userAdminList", "userAdminViewVO", "userAdminPostList", "userAdminCommentList", "userAdminImageSelect", "eventAdminList", "adminCnt", "userAdminImageSelect"})
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
@@ -47,6 +48,8 @@ public class AdminController {
 	private Email email;
 	@Autowired
 	private EmailSender emailSender;
+	@Autowired
+	private ProfileImageService profileImageService;
 	
 	public AdminController() {
 		System.out.println("AdminController로 옴");
@@ -154,16 +157,19 @@ public class AdminController {
 		
 		List<UserAdminPostVO> uplist = null;
 		List<UserAdminCommentVO> upclist = null;
+		List<ProfileImageVO> uilist = null;
 		
 		String m_id = request.getParameter("m_id");
 		
 		uvo = adminService.userAdminView(m_id);
 		uplist = adminService.userAdminPostList(m_id);
 		upclist = adminService.userAdminCommentList(m_id);
+		uilist = profileImageService.getProfileImageList(m_id);
 		
 		model.addAttribute("userAdminViewVO", uvo);
 		model.addAttribute("userAdminPostList", uplist);
 		model.addAttribute("userAdminCommentList", upclist);
+		model.addAttribute("userAdminImageSelect", uilist);
 		
 		return "redirect:/views/admin/pages/examples/userAdminView.jsp";
 	}

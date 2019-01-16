@@ -161,6 +161,20 @@ $(document).ready(function(){
     });
 });
 </script>
+<script>
+	$(document).on("click", "#insertTravelersBtn", function(){
+		if('${member.m_id}' == null || '${member.m_id}' == "") {
+			alert("로그인이 필요한 서비스입니다.");
+			location.href="/loginMember.do";
+		}
+	});
+	$(document).on("click", "#viewModal", function(){
+		if('${member.m_id}' == null || '${member.m_id}' == "") {
+			alert("로그인이 필요한 서비스입니다.");
+			location.href="/loginMember.do";
+		}
+	});
+</script>
  
 </head>
 
@@ -253,7 +267,7 @@ $(document).ready(function(){
                   <hr />
                   <p class="card-text">${list.t_country}</p>
                   <hr />                  
-                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal${list.m_id }">See Profile</button>
+                  <button type="button" id="viewModal" class="btn btn-light" data-toggle="modal" data-target="#myModal${list.m_id }">See Profile</button>
                 </span>
              </span>
             </c:forEach>

@@ -2,17 +2,21 @@ package com.spring.biz.admin;
 
 public class AdminCntVO {
 	private int m_cnt, l_cnt, lc_cnt, h_cnt, t_cnt, msg_cnt, e_cnt, ec_cnt, log_l_cnt, log_v_cnt;
-	
+	private int adm_cnt;
 	private int rh_cnt, rt_cnt;
 
+	public int getAdm_cnt() {
+		return adm_cnt;
+	}
+	public void setAdm_cnt(int adm_cnt) {
+		this.adm_cnt = adm_cnt;
+	}
 	public int getRh_cnt() {
 		return rh_cnt;
 	}
-
 	public void setRh_cnt(int rh_cnt) {
 		this.rh_cnt = rh_cnt;
 	}
-
 	public int getRt_cnt() {
 		return rt_cnt;
 	}
